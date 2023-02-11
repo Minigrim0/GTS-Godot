@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/prefabs/Truck.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/images/backgrounds/map.png" type="Texture" id=2]
+[ext_resource path="res://assets/prefabs/TrashCan.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/prefabs/Car.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/FollowingCamera.gd" type="Script" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 512, 165.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 513, 16.5 )
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 180000, 768 )
+
+[node name="Truck" parent="." instance=ExtResource( 1 )]
+position = Vector2( 135, 468 )
+steering_speed = 600
+speed = 500
+
+[node name="UpperBorder" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBorder"]
+position = Vector2( 513, 167 )
+shape = SubResource( 1 )
+
+[node name="LowerBorder" type="KinematicBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerBorder"]
+position = Vector2( 513, 753 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 5 )
+followed_item = NodePath("../Truck")
+
+[node name="Car" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2309, 499 )
+
+[node name="Node2D2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 4887, 504 )
+
+[node name="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 3597, 627 )
+
+[node name="Node2D3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 5656, 648 )
+
+[node name="Node2D4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 6974, 477 )
+
+[node name="Node2D5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 7882, 691 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1256, 453 )
+
+[node name="KinematicBody2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1453, 458 )
+
+[node name="KinematicBody2D" parent="KinematicBody2D2" instance=ExtResource( 3 )]
+position = Vector2( 212, 1 )
