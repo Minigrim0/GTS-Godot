@@ -91,7 +91,7 @@ hframes = 6
 [node name="CarSprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2( 10, 11.5 )
 shape = SubResource( 1 )
 
