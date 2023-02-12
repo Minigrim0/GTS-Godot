@@ -1,14 +1,10 @@
-extends Camera2D
+extends Node2D
 
-
-# Declare member variables here. Examples:
 export(NodePath) var followed_item
 
-# Called when the node enters the scene tree for the first time.
-# func _ready():
-# 	pass
+func _ready():
+	if followed_item == null:
+		followed_item = "Truck"
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	position.x = get_node(followed_item).position.x
