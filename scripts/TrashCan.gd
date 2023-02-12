@@ -10,7 +10,6 @@ func explode():
 	$AnimationPlayer.current_animation = "Explode"
 	$ExplosionSprite.show()
 	$TrashCanSprite.hide()
-	$CollisionShape2D.disabled = true
 
 func die():
 	queue_free()
