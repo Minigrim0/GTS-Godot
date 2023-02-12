@@ -4,13 +4,13 @@ export(int) var steering_speed = 100
 export(int) var nitro_replenish_speed = 10
 export(int) var nitro_spending_speed = 30  # Per second
 export(int) var speed = 300 # px/second = 3m/s = 10.8km/h
+export(float) var health = 100.0
 
 var velocity = Vector2(0, 0)
 var nitro_level = 0
 var nitro_cooldown = 0
 var nitro_enabled = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$TruckBounce.current_animation = "Balance"
 
@@ -26,6 +26,17 @@ func _process(delta):
 	else:
 		# Make the nitro level go higher
 		nitro_level += delta * nitro_replenish_speed
+
+func upd_health(delta):
+	# Delta can be negative to account for damage
+	health += delta
+	$HealthBar.value = health
+
+func hurt(damage):
+	upd_health(-damage)
+
+func heal(amount):
+	upd_health(amount)
 
 func enable_nitro():
 	if nitro_enabled == false and nitro_level > 20:
