@@ -25,23 +25,23 @@ position = Vector2( 135, 468 )
 steering_speed = 600
 speed = 500
 
-[node name="UpperBorder" type="KinematicBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperBorder"]
-position = Vector2( 513, 167 )
-shape = SubResource( 1 )
-
-[node name="LowerBorder" type="KinematicBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LowerBorder"]
-position = Vector2( 513, 753 )
-shape = SubResource( 2 )
-
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
 script = ExtResource( 5 )
 followed_item = NodePath("../Truck")
+
+[node name="UpperBorder" type="KinematicBody2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/UpperBorder"]
+position = Vector2( 513, 167 )
+shape = SubResource( 1 )
+
+[node name="LowerBorder" type="KinematicBody2D" parent="Camera2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/LowerBorder"]
+position = Vector2( 513, 753 )
+shape = SubResource( 2 )
 
 [node name="Car" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2309, 499 )
@@ -64,8 +64,8 @@ position = Vector2( 7882, 691 )
 [node name="KinematicBody2D" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1256, 453 )
 
+[node name="KinematicBody2D3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1665, 459 )
+
 [node name="KinematicBody2D2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1453, 458 )
-
-[node name="KinematicBody2D" parent="KinematicBody2D2" instance=ExtResource( 3 )]
-position = Vector2( 212, 1 )
