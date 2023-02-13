@@ -35,5 +35,5 @@ func _physics_process(delta):
 	velocity.x = pow(-1, int(heading_left)) * speed * delta
 	var collision = move_and_collide(velocity)
 	if collision != null and collision.collider.name == "Truck":
-		collision.collider.hurt(damage)
+		collision.collider.hurt(10)
 		explode()

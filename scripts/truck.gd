@@ -38,6 +38,9 @@ func hurt(damage):
 func heal(amount):
 	upd_health(amount)
 
+func trashCollected():
+	speed += 5
+
 func enable_nitro():
 	if nitro_enabled == false and nitro_level > 20:
 		nitro_enabled = true

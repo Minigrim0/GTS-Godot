@@ -16,4 +16,5 @@ func die():
 
 func _on_TrashCan_body_entered(body):
 	if body.name == "Truck":
+		body.trashCollected()
 		explode()
