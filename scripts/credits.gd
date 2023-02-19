@@ -4,7 +4,7 @@ const section_time := 2.0
 const line_time := 0.3
 const base_speed := 100
 const speed_up_multiplier := 10.0
-const title_color := Color.blueviolet
+const title_color := Color.black
 
 var scroll_speed := base_speed
 var speed_up := false
@@ -18,7 +18,7 @@ var section_timer := 0.0
 var lines := []
 
 export(String, FILE, "*.json") var credits_file
-var credits
+var credits = {}
 
 func load_credits():
 	var file = File.new()
@@ -32,7 +32,7 @@ func _ready():
 
 
 func _process(delta):
-	var scroll_speed = base_speed * delta
+	var local_scroll_speed = base_speed * delta
 
 	if section_next:  # If a new section is starting (Or must start)
 		section_timer += delta * speed_up_multiplier if speed_up else delta  # Raise the timer
@@ -44,11 +44,11 @@ func _process(delta):
 				add_section(section)  # Add a line
 
 	if speed_up:
-		scroll_speed *= speed_up_multiplier
+		local_scroll_speed *= speed_up_multiplier
 
 	if lines.size() > 0:
 		for l in lines:
-			l.rect_position.y -= scroll_speed
+			l.rect_position.y -= local_scroll_speed
 			if l.rect_position.y < -l.get_line_height():
 				lines.erase(l)
 				l.queue_free()
@@ -59,13 +59,17 @@ func _process(delta):
 func finish():
 	if not finished:
 		finished = true
-		get_tree().change_scene("res://scenes/MainMenu.tscn")
+		assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while change scene to Main Menu")
 
 
 func add_section(section):
 	var section_title = section["name"]
 	var title_line = line.duplicate()
 	title_line.text = section_title
+	# Update the size of the line if the "name_size" property is set
+	if section.has("name_size"):
+		title_line.rect_size.y = section["name_size"]
+
 	title_line.add_color_override("font_color", title_color)
 	$CreditsContainer.add_child(title_line)
 	lines.append(title_line)

@@ -1,49 +1,100 @@
-{
-    "categories": [
-        {
-            "name": "Programming",
-            "values": [
-                "Minigrim0"
-            ]
+[
+    {
+        "name": "Garbage Truck Simulator",
+        "values": [],
+        "name_size": 100
+    },
+    {
+        "name": "Programming",
+        "values": [
+            "Minigrim0"
+        ]
+    },
+    {
+        "name": "Character animations",
+        "values": [
+            "Minigrim0"
+        ]
+    },
+    {
+        "name": "Sound Effects",
+        "values": [
+            "Minigrim0"
+        ]
+    },
+    {
+        "name": "Music",
+        "urls": {
+            "lemonmusicstudio": "https://pixabay.com/users/lemonmusicstudio-14942887/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=15190",
+            "Caffeine_Creek_Band": "https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820",
+            "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820"
         },
-        {
-            "name": "Character animations",
-            "values": [
-                "Minigrim0"
-            ]
-        },
-        {
-            "name": "sound effects",
-            "values": [
-                "Minigrim0"
-            ]
-        },
-        {
-            "name": "Music",
-            "values": {
-                "Song": "Frantic",
-                "Artist": "lemonmusicstudio",
-                "platform": "Pixabay"
+        "values": [
+            {
+                "type": "music",
+                "song": "Frantic",
+                "artist": {
+                    "url": true,
+                    "value": "lemonmusicstudio"
+                },
+                "platform": {
+                    "url": true,
+                    "value": "Pixabay"
+                }
             },
-            "urls": {
-                "lemonmusicstudio": "https://pixabay.com/users/lemonmusicstudio-14942887/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=15190",
-                "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=15190"
+            {
+                "type": "music",
+                "song": "Banjo Pickin",
+                "artist": {
+                    "url": true,
+                    "value": "Caffeine_Creek_Band"
+                },
+                "platform": {
+                    "url": true,
+                    "value": "Pixabay"
+                }
+            },
+            {
+                "type": "music",
+                "song": "Banjo Romp",
+                "artist": {
+                    "url": true,
+                    "value": "Caffeine_Creek_Band"
+                },
+                "platform": {
+                    "url": true,
+                    "value": "Pixabay"
+                }
+            },
+            {
+                "type": "music",
+                "song": "Cool Folk Music",
+                "artist": {
+                    "url": true,
+                    "value": "Caffeine_Creek_Band"
+                },
+                "platform": {
+                    "url": true,
+                    "value": "Pixabay"
+                }
             }
-        },
-        {
-            "name": "",
-            "values": [
-                "This game was made using pygame",
-                {
-                    "image": ".meta/pygame.png",
-                    "position": "centered"
-                },
-                "You can contribute to this project on",
-                {
-                    "image": ".meta/github.png"
-                },
-                "https://github.com/Minigrim0/Garbage-Truck-Simulator"
-            ]
-        }
-    ]
-}
+        ]
+    },
+    {
+        "name": "",
+        "values": [
+            "This game was made using pygame",
+            {
+                "type": "image",
+                "image": ".meta/pygame.png",
+                "position": "centered"
+            },
+            "You can contribute to this project on",
+            {
+                "type": "image",
+                "image": ".meta/github.png"
+            },
+            "https://github.com/Minigrim0/Garbage-Truck-Simulator"
+        ]
+    }
+]
