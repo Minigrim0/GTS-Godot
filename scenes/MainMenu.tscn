@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/images/marcel.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/medieval-sharp/MedievalSharp-xOZ5.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/music/frantic-15190.ogg" type="AudioStream" id=3]
+[ext_resource path="res://scripts/Disclaimer.gd" type="Script" id=4]
+[ext_resource path="res://prefabs/MichaelBay.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 112
@@ -236,6 +238,8 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Be aware that this game contains Michael Bay."
 valign = 1
+script = ExtResource( 4 )
+michel_path = NodePath("../../../../MichaelBay")
 
 [node name="copyright" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 margin_left = 937.0
@@ -253,3 +257,8 @@ valign = 1
 stream = ExtResource( 3 )
 volume_db = -15.0
 autoplay = true
+
+[node name="MichaelBay" parent="." instance=ExtResource( 5 )]
+position = Vector2( 500, 1080 )
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer2/Disclaimer" to="MarginContainer/VBoxContainer/HBoxContainer2/Disclaimer" method="_on_mouse_entered"]
