@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/cool-folk-music-118310.mp3-df94bc5134ef883730bbe06801c0445c.mp3str"
+
+[deps]
+
+source_file="res://assets/music/cool-folk-music-118310.mp3"
+dest_files=[ "res://.import/cool-folk-music-118310.mp3-df94bc5134ef883730bbe06801c0445c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

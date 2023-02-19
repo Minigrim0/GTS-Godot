@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/banjo-pickin-820.mp3-a209d0187b363111008ee97f73d32be0.mp3str"
+
+[deps]
+
+source_file="res://assets/music/banjo-pickin-820.mp3"
+dest_files=[ "res://.import/banjo-pickin-820.mp3-a209d0187b363111008ee97f73d32be0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
