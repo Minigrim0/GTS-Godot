@@ -1,57 +1,19 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/images/marcel.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/medieval-sharp/MedievalSharp-xOZ5.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/music/frantic-15190.ogg" type="AudioStream" id=3]
 [ext_resource path="res://scripts/Disclaimer.gd" type="Script" id=4]
 [ext_resource path="res://prefabs/MichaelBay.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/Quit Button.gd" type="Script" id=6]
+[ext_resource path="res://scripts/MainMenu.gd" type="Script" id=6]
+[ext_resource path="res://themes/MainMenuButtons.tres" type="Theme" id=7]
+[ext_resource path="res://assets/fonts/MedievalSharp.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 112
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 42
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0, 0, 0, 0.490196 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0, 0, 0, 0.686275 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.301961, 0.192157, 0.192157, 0.392157 )
-
-[sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0, 0, 0, 0.392157 )
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-
-[sub_resource type="DynamicFont" id=9]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=7]
-size = 25
-font_data = ExtResource( 2 )
-
 [node name="MainMenu" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1920.0
@@ -142,11 +104,7 @@ margin_bottom = 87.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/disabled = SubResource( 8 )
-custom_styles/normal = SubResource( 5 )
+theme = ExtResource( 7 )
 disabled = true
 enabled_focus_mode = 0
 text = "Continue"
@@ -167,10 +125,7 @@ margin_bottom = 87.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+theme = ExtResource( 7 )
 text = "New Game"
 
 [node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -189,10 +144,8 @@ margin_bottom = 87.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+theme = ExtResource( 7 )
+disabled = true
 text = "Options"
 
 [node name="MarginContainer5" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -211,10 +164,7 @@ margin_bottom = 87.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+theme = ExtResource( 7 )
 text = "Credits"
 
 [node name="MarginContainer4" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
@@ -233,12 +183,8 @@ margin_bottom = 87.0
 focus_mode = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 2 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
+theme = ExtResource( 7 )
 text = "Quit"
-script = ExtResource( 6 )
 
 [node name="HSplitContainer2" type="HSplitContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 642.0
@@ -277,7 +223,7 @@ margin_top = 21.0
 margin_right = 388.0
 margin_bottom = 52.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = ExtResource( 8 )
 text = "Be aware that this game contains "
 
 [node name="MichaelBay" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
@@ -286,7 +232,7 @@ margin_right = 537.0
 margin_bottom = 73.0
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = ExtResource( 8 )
 text = "Michael Bay."
 valign = 1
 script = ExtResource( 4 )
@@ -299,18 +245,16 @@ margin_bottom = 73.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = ExtResource( 8 )
 text = "Minigrim0® 2016-2023"
 align = 2
 valign = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
-volume_db = -15.0
-autoplay = true
-
 [node name="MichaelBay" parent="." instance=ExtResource( 5 )]
 position = Vector2( 500, 1080 )
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer4/Quit Button" to="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer4/Quit Button" method="_on_Quit_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer2/NewGame Button" to="." method="_on_NewGame_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer3/Options Button" to="." method="_on_Options_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer5/Credits Button" to="." method="_on_Credits_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer4/Quit Button" to="." method="_on_Quit_Button_pressed"]
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer2/MichaelBay" to="MarginContainer/VBoxContainer/HBoxContainer2/MichaelBay" method="_on_mouse_entered"]
