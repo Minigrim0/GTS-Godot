@@ -6,6 +6,10 @@ export(int) var nitro_spending_speed = 30  # Per second
 export(int) var speed = 300 # px/second = 3m/s = 10.8km/h
 export(float) var health = 100.0
 
+export(String, "Male", "Female") var driver_gender = "Male"
+
+var alcohol_level = 0.0  # mg/L
+
 var velocity = Vector2(0, 0)
 var nitro_level = 0
 var nitro_cooldown = 0
@@ -27,6 +31,10 @@ func _process(delta):
 		# Make the nitro level go higher
 		nitro_level += delta * nitro_replenish_speed
 
+	if alcohol_level > 0:
+		# An hour is 2 minutes irl, delta is in seconds
+		alcohol_level -= 0.015 * delta / 120
+
 func upd_health(delta):
 	# Delta can be negative to account for damage
 	health += delta
@@ -37,6 +45,22 @@ func hurt(damage):
 
 func heal(amount):
 	upd_health(amount)
+
+func add_alcohol(percent):
+	# BAC = [Alcohol consumed in grams / (Body weight in grams x r)] x 100.
+	# “r” is the gender constant: r = 0.55 for females and 0.68 for males.
+	# 1 Standard drink = 1 beer @ 5% => Take the percent of the beer modulo 5
+	# Multiply the standard drinks amount by 14 => grams of alcohol
+	# Multiply the bodyweight by the gender constant
+	# Divide the grams of alcohol by the result above
+	# This is the percent of alcohol in the blood
+	# Substract 0.015 per hour
+	# An hour in game is 2 minutes irl
+	var standard_drinks = percent % 5
+	var grams_of_alcohol = standard_drinks * 14
+	var bodyweight = 70
+	var r = 0.68 if driver_gender == "Male" else 0.55
+	var bac = (grams_of_alcohol / (bodyweight * r)) * 100
 
 func trashCollected():
 	speed += 5
