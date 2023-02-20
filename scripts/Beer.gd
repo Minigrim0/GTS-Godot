@@ -1,7 +1,7 @@
 extends Area2D
 
 export(float) var alcohol_level = 4.8
-export(float) var health_bonus = 5
+export(float) var health_bonus = 5.0
 
 
 func _on_Node2D_body_entered(body):
