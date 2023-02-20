@@ -29,7 +29,6 @@ func explode():
 	$CarSprite.hide()
 	$ExplosionSprite.show()
 	$ExplosionAnimationPlayer.current_animation = "Explode"
-	$CollisionShape.set_disabled(true)
 
 func _physics_process(delta):
 	velocity.x = pow(-1, int(heading_left)) * speed * delta
