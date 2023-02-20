@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 export(int) var speed
 export(bool) var heading_left # True = to the left, False = to the right
@@ -29,11 +29,13 @@ func explode():
 	$CarSprite.hide()
 	$ExplosionSprite.show()
 	$ExplosionAnimationPlayer.current_animation = "Explode"
-	$CollisionShape.disabled = true
+	$CollisionShape.set_disabled(true)
 
 func _physics_process(delta):
 	velocity.x = pow(-1, int(heading_left)) * speed * delta
-	var collision = move_and_collide(velocity)
-	if collision != null and collision.collider.name == "Truck":
-		collision.collider.hurt(10)
+	position += velocity
+
+func _on_Car_body_entered(body):
+	if body.name == "Truck":
+		body.hurt(damage)
 		explode()
