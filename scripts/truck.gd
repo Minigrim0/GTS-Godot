@@ -6,6 +6,11 @@ export(int) var nitro_spending_speed = 30  # Per second
 export(int) var speed = 300 # px/second = 3m/s = 10.8km/h
 export(float) var health = 100.0
 
+export(NodePath) var NitroProgressBarPath
+export(NodePath) var NitroLabelPath
+var NitroProgessBar = null
+var NitroLabel = null
+
 export(String, "Male", "Female") var driver_gender = "Male"
 
 var alcohol_level = 0.0  # mg/L
@@ -17,16 +22,22 @@ var nitro_enabled = false
 
 func _ready():
 	$TruckBounce.current_animation = "Balance"
+	NitroLabel = get_node(NitroLabelPath)
+	NitroProgessBar = get_node(NitroProgressBarPath)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if nitro_enabled:
 		nitro_level -= nitro_spending_speed * delta
 		if nitro_level <= 0:
+			nitro_level = 0
 			disable_nitro()
 	elif nitro_cooldown > 0:
 		# Diminish nitro cooldown
 		nitro_cooldown -= delta
+	elif nitro_level >= 100:
+		# Stop it at 100
+		nitro_level = 100
 	else:
 		# Make the nitro level go higher
 		nitro_level += delta * nitro_replenish_speed
@@ -34,6 +45,11 @@ func _process(delta):
 	if alcohol_level > 0:
 		# An hour is 2 minutes irl, delta is in seconds
 		alcohol_level -= 0.015 * delta / 120
+
+	if NitroProgessBar != null:
+		NitroProgessBar.value = nitro_level
+	if NitroLabel != null:
+		NitroLabel.text = "%d%%" % nitro_level
 
 func upd_health(delta):
 	# Delta can be negative to account for damage
@@ -56,7 +72,7 @@ func add_alcohol(percent):
 	# This is the percent of alcohol in the blood
 	# Substract 0.015 per hour
 	# An hour in game is 2 minutes irl
-	var standard_drinks = percent % 5
+	var standard_drinks = fmod(percent, 5)
 	var grams_of_alcohol = standard_drinks * 14
 	var bodyweight = 70
 	var r = 0.68 if driver_gender == "Male" else 0.55
