@@ -11,6 +11,17 @@ export(NodePath) var NitroLabelPath
 var NitroProgessBar = null
 var NitroLabel = null
 
+export(NodePath) var SpeedProgressBarPath
+export(NodePath) var SpeedLabelPath
+var SpeedProgessBar = null
+var SpeedLabel = null
+
+export(NodePath) var AlcoholProgressBarPath
+export(NodePath) var AlcoholLabelPath
+var AlcoholProgessBar = null
+var AlcoholLabel = null
+
+
 export(String, "Male", "Female") var driver_gender = "Male"
 
 var alcohol_level = 0.0  # mg/L
@@ -20,10 +31,15 @@ var nitro_level = 0
 var nitro_cooldown = 0
 var nitro_enabled = false
 
+
 func _ready():
 	$TruckBounce.current_animation = "Balance"
 	NitroLabel = get_node(NitroLabelPath)
 	NitroProgessBar = get_node(NitroProgressBarPath)
+	SpeedLabel = get_node(SpeedLabelPath)
+	SpeedProgessBar = get_node(SpeedProgressBarPath)
+	AlcoholLabel = get_node(AlcoholLabelPath)
+	AlcoholProgessBar = get_node(AlcoholProgressBarPath)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -51,6 +67,25 @@ func _process(delta):
 	if NitroLabel != null:
 		NitroLabel.text = "%d%%" % nitro_level
 
+	if SpeedProgessBar != null:
+		SpeedProgessBar.value = kmh_speed()
+	if SpeedLabel != null:
+		SpeedLabel.text = "%d km/h" % kmh_speed()
+
+	if AlcoholProgessBar != null:
+		AlcoholProgessBar.value = alcohol_level
+	if AlcoholLabel != null:
+		AlcoholLabel.text = "%f%%" % alcohol_level
+
+
+func actual_speed():
+	return speed * (health / 100)
+
+
+func kmh_speed():
+	return (actual_speed() / 100) * 3.6
+
+
 func upd_health(delta):
 	# Delta can be negative to account for damage
 	health += delta
@@ -61,6 +96,7 @@ func hurt(damage):
 
 func heal(amount):
 	upd_health(amount)
+	health = clamp(health, 0, 100)
 
 func add_alcohol(percent):
 	# BAC = [Alcohol consumed in grams / (Body weight in grams x r)] x 100.
@@ -74,9 +110,9 @@ func add_alcohol(percent):
 	# An hour in game is 2 minutes irl
 	var standard_drinks = fmod(percent, 5)
 	var grams_of_alcohol = standard_drinks * 14
-	var bodyweight = 70
+	var bodyweight = 70000  # In grams
 	var r = 0.68 if driver_gender == "Male" else 0.55
-	var bac = (grams_of_alcohol / (bodyweight * r)) * 100
+	alcohol_level += (grams_of_alcohol / (bodyweight * r)) * 100
 
 func trashCollected():
 	speed += 5
@@ -107,7 +143,7 @@ func process_movement():
 	if Input.is_action_pressed("move_down"):
 		velocity.y += 1.0
 	velocity = velocity.normalized() * steering_speed
-	velocity.x = speed
+	velocity.x = actual_speed()
 
 func _physics_process(_delta):
 	process_movement()
