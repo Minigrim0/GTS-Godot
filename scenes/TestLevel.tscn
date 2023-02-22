@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://prefabs/Truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/backgrounds/map.png" type="Texture" id=2]
@@ -21,6 +21,12 @@ extents = Vector2( 194, 16.5 )
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 100, 385 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 10, 540 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 40, 540 )
+
 [node name="Level" type="Node2D"]
 
 [node name="Background2" type="Node2D" parent="."]
@@ -40,8 +46,9 @@ region_rect = Rect2( 0, 0, 180000, 768 )
 
 [node name="Truck" parent="." instance=ExtResource( 1 )]
 position = Vector2( 135, 468 )
-steering_speed = 600
-speed = 500
+steering_speed = 750
+nitro_replenish_speed = 50
+speed = 4000
 NitroProgressBarPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/TextureProgress")
 NitroLabelPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/NitroPercent")
 SpeedProgressBarPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/TextureProgress")
@@ -229,4 +236,19 @@ spawn_pixel_cooldown = 4000
 [node name="Sprite" type="Sprite" parent="GameElements/BeerSpawner"]
 texture = ExtResource( 9 )
 
+[node name="EndCollisionCheck" type="Area2D" parent="GameElements"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameElements/EndCollisionCheck"]
+position = Vector2( -10, 540 )
+shape = SubResource( 5 )
+
+[node name="LevelEnd" type="Area2D" parent="."]
+position = Vector2( 180000, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
+position = Vector2( -2200, 540 )
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="GameElements/Borders/GarbageCollector" to="GameElements/Borders/GarbageCollector" method="_on_GarbageCollector_area_entered"]
 [connection signal="body_entered" from="GameElements/Borders/GarbageCollector" to="GameElements/Borders/GarbageCollector" method="_on_GarbageCollector_body_entered"]
+[connection signal="area_entered" from="LevelEnd" to="GameElements" method="_on_LevelEnd_area_entered"]
