@@ -36,58 +36,37 @@
     },
     {
         "name": "Music",
-        "urls": {
-            "lemonmusicstudio": "https://pixabay.com/users/lemonmusicstudio-14942887/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=15190",
-            "Caffeine_Creek_Band": "https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820",
-            "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820"
-        },
         "values": [
             {
-                "type": "music",
-                "song": "Frantic",
-                "artist": {
-                    "url": true,
-                    "value": "lemonmusicstudio"
-                },
-                "platform": {
-                    "url": true,
-                    "value": "Pixabay"
+                "type": "fstring",
+                "value": "Frantic by Lemon Music Studio on Pixabay",
+                "urls": {
+                    "Lemon Music Studio": "https://pixabay.com/users/lemonmusicstudio-14942887/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=15190",
+                    "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820"
                 }
             },
             {
-                "type": "music",
-                "song": "Banjo Pickin",
-                "artist": {
-                    "url": true,
-                    "value": "Caffeine_Creek_Band"
-                },
-                "platform": {
-                    "url": true,
-                    "value": "Pixabay"
+                "type": "fstring",
+                "value": "Banjo Pickin By Caffeine_Creek_Band on Pixabay",
+                "urls": {
+                    "Caffeine_Creek_Band": "https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820",
+                    "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820"
                 }
             },
             {
-                "type": "music",
-                "song": "Banjo Romp",
-                "artist": {
-                    "url": true,
-                    "value": "Caffeine_Creek_Band"
-                },
-                "platform": {
-                    "url": true,
-                    "value": "Pixabay"
+                "type": "fstring",
+                "value": "Banjo Romp By Caffeine_Creek_Band on Pixabay",
+                "urls": {
+                    "Caffeine_Creek_Band": "https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820",
+                    "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820"
                 }
             },
             {
-                "type": "music",
-                "song": "Cool Folk Music",
-                "artist": {
-                    "url": true,
-                    "value": "Caffeine_Creek_Band"
-                },
-                "platform": {
-                    "url": true,
-                    "value": "Pixabay"
+                "type": "fstring",
+                "value": "Cool Folk Music By Caffeine_Creek_Band on Pixabay",
+                "urls": {
+                    "Caffeine_Creek_Band": "https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820",
+                    "Pixabay": "https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820"
                 }
             }
         ]
@@ -95,10 +74,10 @@
     {
         "name": "",
         "values": [
-            "This game was made using pygame",
+            "This game was made using the Godot Game Engine",
             {
                 "type": "image",
-                "image": ".meta/pygame.png",
+                "image": ".meta/godot.png",
                 "position": "centered"
             },
             {
