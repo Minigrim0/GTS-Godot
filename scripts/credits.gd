@@ -10,6 +10,9 @@ var scroll_speed := base_speed
 var speed_up := false
 
 onready var line := $CreditsContainer/Line
+onready var sectionLine := $CreditsContainer/SectionTitle
+onready var titleLine := $CreditsContainer/TitleLine
+onready var richLine := $CreditsContainer/RichLine
 var started := false
 var finished := false
 
@@ -49,7 +52,7 @@ func _process(delta):
 	if lines.size() > 0:
 		for l in lines:
 			l.rect_position.y -= local_scroll_speed
-			if l.rect_position.y < -l.get_line_height():
+			if l.rect_position.y < -l.get_size().y:
 				lines.erase(l)
 				l.queue_free()
 	elif started:
@@ -62,24 +65,54 @@ func finish():
 		assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while change scene to Main Menu")
 
 
-func add_section(section):
-	var section_title = section["name"]
-	var title_line = line.duplicate()
-	title_line.text = section_title
-	# Update the size of the line if the "name_size" property is set
-	if section.has("name_size"):
-		title_line.rect_size.y = section["name_size"]
+func add_string(index, value):
+	var value_line = line.duplicate()
+	value_line.text = value
+	value_line.rect_position.y += (index + 2) * (value_line.rect_size.y + 5)
+	$CreditsContainer.add_child(value_line)
+	lines.append(value_line)
 
-	title_line.add_color_override("font_color", title_color)
+func onMetaClick(meta):
+	OS.shell_open(meta)
+
+func add_dictionnary(index, dict):
+	if dict["type"] == "fstring":
+		var rich_line = richLine.duplicate()
+		var formatted_line = dict["value"]
+		for key in dict["urls"]:
+			var formatted = "[url=%s]%s[/url]" % [dict["urls"][key], key]
+			formatted_line = formatted_line.replace(key, formatted)
+		formatted_line = "[center]%s[/center]" % formatted_line
+		richLine.bbcode_text = formatted_line
+		richLine.rect_position.y += (index + 2) * (richLine.rect_size.y + 5)
+		richLine.connect("meta_clicked", self, "onMetaClick")
+
+		$CreditsContainer.add_child(richLine)
+		lines.append(richLine)
+
+
+func add_title(section):
+	var title_line
+	if section.has("type") and section["type"] == "big title":
+		title_line = titleLine.duplicate()
+	else:
+		title_line = sectionLine.duplicate()
+		title_line.add_color_override("font_color", title_color)
+	title_line.text = section["name"]
 	$CreditsContainer.add_child(title_line)
 	lines.append(title_line)
 
+
+func add_section(section):
+	add_title(section)
+
 	for index in section["values"].size():
-		var value_line = line.duplicate()
-		value_line.text = section["values"][index]
-		value_line.rect_position.y += (index + 2) * (value_line.rect_size.y + 5)
-		$CreditsContainer.add_child(value_line)
-		lines.append(value_line)
+		var val_type = typeof(section["values"][index])
+		if val_type == TYPE_STRING:
+			add_string(index, section["values"][index])
+		elif val_type == TYPE_DICTIONARY:
+			add_dictionnary(index, section["values"][index])
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
