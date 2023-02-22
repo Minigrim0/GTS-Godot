@@ -1,42 +1,13 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://prefabs/Truck.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/images/backgrounds/map.png" type="Texture" id=2]
-[ext_resource path="res://scripts/GarbageCollector.gd" type="Script" id=3]
-[ext_resource path="res://assets/images/car.png" type="Texture" id=4]
-[ext_resource path="res://scripts/FollowingCamera.gd" type="Script" id=5]
-[ext_resource path="res://assets/images/interface/gauge/gauge.png" type="Texture" id=6]
-[ext_resource path="res://assets/images/poubelle.png" type="Texture" id=7]
-[ext_resource path="res://assets/images/interface/gauge/gauge_over.png" type="Texture" id=8]
-[ext_resource path="res://assets/images/Cara.png" type="Texture" id=9]
-[ext_resource path="res://scripts/spawner.gd" type="Script" id=10]
-[ext_resource path="res://themes/GameGuiText.tres" type="Theme" id=11]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 193, 165.5 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 194, 16.5 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 100, 385 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 10, 540 )
+[ext_resource path="res://prefabs/GameUi.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 40, 540 )
 
 [node name="Level" type="Node2D"]
-
-[node name="Background2" type="Node2D" parent="."]
-script = ExtResource( 5 )
-followed_item = NodePath("../Truck")
-
-[node name="ColorRect" type="ColorRect" parent="Background2"]
-margin_right = 1920.0
-margin_bottom = 1080.0
-color = Color( 0.109804, 0.109804, 0.109804, 1 )
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -46,201 +17,16 @@ region_rect = Rect2( 0, 0, 180000, 768 )
 
 [node name="Truck" parent="." instance=ExtResource( 1 )]
 position = Vector2( 135, 468 )
-steering_speed = 750
-nitro_replenish_speed = 50
-speed = 4000
-NitroProgressBarPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/TextureProgress")
-NitroLabelPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/NitroPercent")
-SpeedProgressBarPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/TextureProgress")
-SpeedLabelPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/SpeedText")
-AlcoholProgressBarPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/TextureProgress")
-AlcoholLabelPath = NodePath("../GameElements/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/AlcoholText")
+steering_speed = 600
+speed = 400
+NitroProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/TextureProgress")
+NitroLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/NitroPercent")
+SpeedProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/TextureProgress")
+SpeedLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/SpeedText")
+AlcoholProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/TextureProgress")
+AlcoholLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/AlcoholText")
 
-[node name="GameElements" type="Node2D" parent="."]
-script = ExtResource( 5 )
-followed_item = NodePath("../Truck")
-
-[node name="MarginContainer" type="MarginContainer" parent="GameElements"]
-margin_right = 1920.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameElements/MarginContainer"]
-margin_right = 1920.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="VSplitContainer" type="VSplitContainer" parent="GameElements/MarginContainer/VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 785.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="GameElements/MarginContainer/VBoxContainer"]
-margin_top = 789.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-size_flags_stretch_ratio = 0.37
-
-[node name="NitroGauge" type="VBoxContainer" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 200.0
-margin_bottom = 291.0
-
-[node name="NitroLabel" type="Label" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
-margin_right = 200.0
-margin_bottom = 31.0
-theme = ExtResource( 11 )
-text = "Nitro"
-align = 1
-
-[node name="TextureProgress" type="TextureProgress" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
-margin_top = 35.0
-margin_right = 200.0
-margin_bottom = 235.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 8 )
-fill_mode = 4
-radial_initial_angle = 218.0
-radial_fill_degrees = 282.0
-
-[node name="NitroPercent" type="Label" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
-margin_top = 239.0
-margin_right = 200.0
-margin_bottom = 270.0
-size_flags_horizontal = 3
-theme = ExtResource( 11 )
-text = "0%"
-align = 1
-
-[node name="SpeedGauge" type="VBoxContainer" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 204.0
-margin_right = 404.0
-margin_bottom = 291.0
-
-[node name="SpeedLabel" type="Label" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
-margin_right = 200.0
-margin_bottom = 31.0
-theme = ExtResource( 11 )
-text = "Speed"
-align = 1
-
-[node name="TextureProgress" type="TextureProgress" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
-margin_top = 35.0
-margin_right = 200.0
-margin_bottom = 235.0
-max_value = 350.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 8 )
-fill_mode = 4
-radial_initial_angle = 218.0
-radial_fill_degrees = 282.0
-
-[node name="SpeedText" type="Label" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
-margin_top = 239.0
-margin_right = 200.0
-margin_bottom = 270.0
-size_flags_horizontal = 3
-theme = ExtResource( 11 )
-text = "0 km/h"
-align = 1
-
-[node name="AlcoholGauge" type="VBoxContainer" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_left = 408.0
-margin_right = 608.0
-margin_bottom = 291.0
-
-[node name="AlcoholLabel" type="Label" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
-margin_right = 200.0
-margin_bottom = 31.0
-theme = ExtResource( 11 )
-text = "Alcohol Level"
-align = 1
-
-[node name="TextureProgress" type="TextureProgress" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
-margin_top = 35.0
-margin_right = 200.0
-margin_bottom = 235.0
-max_value = 4.0
-texture_under = ExtResource( 6 )
-texture_progress = ExtResource( 8 )
-fill_mode = 4
-radial_initial_angle = 218.0
-radial_fill_degrees = 282.0
-
-[node name="AlcoholText" type="Label" parent="GameElements/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
-margin_top = 239.0
-margin_right = 200.0
-margin_bottom = 270.0
-size_flags_horizontal = 3
-theme = ExtResource( 11 )
-text = "0%"
-align = 1
-
-[node name="Camera2D" type="Camera2D" parent="GameElements"]
-anchor_mode = 0
-current = true
-
-[node name="CarSpawner" type="Node2D" parent="GameElements"]
-position = Vector2( 2000, 540 )
-script = ExtResource( 10 )
-object_to_spawn = "res://prefabs/Car.tscn"
-
-[node name="Sprite" type="Sprite" parent="GameElements/CarSpawner"]
-texture = ExtResource( 4 )
-
-[node name="TrashSpawner" type="Node2D" parent="GameElements"]
-position = Vector2( 1950, 540 )
-script = ExtResource( 10 )
-object_to_spawn = "res://prefabs/TrashCan.tscn"
-spawn_pixel_cooldown = 200
-
-[node name="Sprite" type="Sprite" parent="GameElements/TrashSpawner"]
-texture = ExtResource( 7 )
-
-[node name="Borders" type="Node2D" parent="GameElements"]
-
-[node name="UpperBorder" type="KinematicBody2D" parent="GameElements/Borders"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameElements/Borders/UpperBorder"]
-position = Vector2( 436, 167 )
-shape = SubResource( 1 )
-
-[node name="LowerBorder" type="KinematicBody2D" parent="GameElements/Borders"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameElements/Borders/LowerBorder"]
-position = Vector2( 437, 753 )
-shape = SubResource( 2 )
-
-[node name="GarbageCollector" type="Area2D" parent="GameElements/Borders"]
-script = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameElements/Borders/GarbageCollector"]
-position = Vector2( -200, 385 )
-shape = SubResource( 3 )
-__meta__ = {
-"_editor_description_": "Garbage Collector, destroy every object that crosses it"
-}
-
-[node name="BeerSpawner" type="Node2D" parent="GameElements"]
-position = Vector2( 1940, 540 )
-script = ExtResource( 10 )
-object_to_spawn = "res://prefabs/Beer.tscn"
-spawn_pixel_cooldown = 4000
-
-[node name="Sprite" type="Sprite" parent="GameElements/BeerSpawner"]
-texture = ExtResource( 9 )
-
-[node name="EndCollisionCheck" type="Area2D" parent="GameElements"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GameElements/EndCollisionCheck"]
-position = Vector2( -10, 540 )
-shape = SubResource( 5 )
+[node name="GameUI" parent="." instance=ExtResource( 3 )]
 
 [node name="LevelEnd" type="Area2D" parent="."]
 position = Vector2( 180000, 0 )
@@ -248,7 +34,3 @@ position = Vector2( 180000, 0 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
 position = Vector2( -2200, 540 )
 shape = SubResource( 4 )
-
-[connection signal="area_entered" from="GameElements/Borders/GarbageCollector" to="GameElements/Borders/GarbageCollector" method="_on_GarbageCollector_area_entered"]
-[connection signal="body_entered" from="GameElements/Borders/GarbageCollector" to="GameElements/Borders/GarbageCollector" method="_on_GarbageCollector_body_entered"]
-[connection signal="area_entered" from="LevelEnd" to="GameElements" method="_on_LevelEnd_area_entered"]
