@@ -1,27 +1,23 @@
 extends Node2D
 
-const section_time := 2.0
-const line_time := 0.3
 const base_speed := 100
 const speed_up_multiplier := 10.0
 const title_color := Color.black
 
-var scroll_speed := base_speed
 var speed_up := false
 
 onready var line := $CreditsContainer/Line
 onready var sectionLine := $CreditsContainer/SectionTitle
 onready var titleLine := $CreditsContainer/TitleLine
 onready var richLine := $CreditsContainer/RichLine
-var started := false
-var finished := false
 
-var section_next := true
-var section_timer := 0.0
+var section_separation = 0
+var section_distance = 1
 var lines := []
 
 export(String, FILE, "*.json") var credits_file
 var credits = {}
+
 
 func load_credits():
 	var file = File.new()
@@ -37,14 +33,13 @@ func _ready():
 func _process(delta):
 	var local_scroll_speed = base_speed * delta
 
-	if section_next:  # If a new section is starting (Or must start)
-		section_timer += delta * speed_up_multiplier if speed_up else delta  # Raise the timer
-		if section_timer >= section_time:  # If the timer is above the threshold
-			section_timer -= section_time
+	section_distance += local_scroll_speed * speed_up_multiplier if speed_up else local_scroll_speed  # Raise the timer
+	if section_distance >= section_separation:  # If the timer is above the threshold
+		section_distance -= section_separation
 
-			if credits.size() > 0:  # If there is still something in the credits
-				var section = credits.pop_front()  # Take the first element
-				add_section(section)  # Add a line
+		if credits.size() > 0:  # If there is still something in the credits
+			var section = credits.pop_front()  # Take the first element
+			add_section(section)  # Add a line
 
 	if speed_up:
 		local_scroll_speed *= speed_up_multiplier
@@ -55,25 +50,23 @@ func _process(delta):
 			if l.rect_position.y < -l.get_size().y:
 				lines.erase(l)
 				l.queue_free()
-	elif started:
-		finish()
+		if lines.size() == 0:
+			finish()
 
 
 func finish():
-	if not finished:
-		finished = true
-		assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while change scene to Main Menu")
+	assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while change scene to Main Menu")
 
 
 func add_string(index, value):
 	var value_line = line.duplicate()
 	value_line.text = value
-	value_line.rect_position.y += (index + 2) * (value_line.rect_size.y + 5)
+	value_line.rect_position.y += (index + 3) * (value_line.rect_size.y + 5)
 	$CreditsContainer.add_child(value_line)
 	lines.append(value_line)
 
 func onMetaClick(meta):
-	OS.shell_open(meta)
+	assert(OS.shell_open(meta) == 0, "An error occured while opening a link")
 
 func add_dictionnary(index, dict):
 	if dict["type"] == "fstring":
@@ -83,12 +76,12 @@ func add_dictionnary(index, dict):
 			var formatted = "[url=%s]%s[/url]" % [dict["urls"][key], key]
 			formatted_line = formatted_line.replace(key, formatted)
 		formatted_line = "[center]%s[/center]" % formatted_line
-		richLine.bbcode_text = formatted_line
-		richLine.rect_position.y += (index + 2) * (richLine.rect_size.y + 5)
-		richLine.connect("meta_clicked", self, "onMetaClick")
+		rich_line.bbcode_text = formatted_line
+		rich_line.rect_position.y += (index + 2) * (rich_line.rect_size.y + 5)
+		rich_line.connect("meta_clicked", self, "onMetaClick")
 
-		$CreditsContainer.add_child(richLine)
-		lines.append(richLine)
+		$CreditsContainer.add_child(rich_line)
+		lines.append(rich_line)
 
 
 func add_title(section):
@@ -105,6 +98,7 @@ func add_title(section):
 
 func add_section(section):
 	add_title(section)
+	var last_index = 1
 
 	for index in section["values"].size():
 		var val_type = typeof(section["values"][index])
@@ -112,7 +106,9 @@ func add_section(section):
 			add_string(index, section["values"][index])
 		elif val_type == TYPE_DICTIONARY:
 			add_dictionnary(index, section["values"][index])
+		last_index = index
 
+	section_separation = (last_index + 5) * 60
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_cancel"):
