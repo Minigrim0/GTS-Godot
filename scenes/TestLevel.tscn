@@ -31,6 +31,7 @@ followedItemPath = NodePath("../Truck")
 endOfLevelPath = NodePath("../LevelEnd")
 
 [node name="LevelEnd" type="Area2D" parent="."]
+position = Vector2( 180000, 0 )
 collision_layer = 8
 collision_mask = 8
 

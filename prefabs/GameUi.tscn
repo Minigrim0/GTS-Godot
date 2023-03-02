@@ -194,7 +194,6 @@ align = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-current = true
 
 [node name="Spawners" type="Node2D" parent="."]
 
