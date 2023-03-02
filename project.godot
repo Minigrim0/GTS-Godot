@@ -16,7 +16,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-MainMusicPlayer="*res://scenes/MainMusicPlayer.tscn"
+MainMusicPlayer="*res://singletons/MainMusicPlayer.tscn"
+PlayerState="*res://singletons/playerState.tscn"
 
 [debug]
 
