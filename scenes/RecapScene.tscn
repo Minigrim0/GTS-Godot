@@ -1,12 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/images/backgrounds/RecapScreen.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/Eraser/EraserRegular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/sounds/Pose1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/Pose2.ogg" type="AudioStream" id=4]
 [ext_resource path="res://assets/fonts/Chalky/Chalk-y Sans.otf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/sounds/Roll.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scripts/RecapScene.gd" type="Script" id=7]
+[ext_resource path="res://assets/sounds/A.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/B.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/C.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=6]
 size = 100
@@ -19,7 +21,6 @@ font_data = ExtResource( 5 )
 [sub_resource type="DynamicFont" id=2]
 size = 45
 font_data = ExtResource( 5 )
-fallback/0 = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 120
@@ -218,16 +219,22 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 7.5 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 7.5, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "playScore"
+}, {
+"args": [  ],
+"method": "endScene"
 } ]
 }
 
 [node name="RecapScene" type="Node2D"]
 script = ExtResource( 7 )
+totalTime = 200.0
+efficiency = 40.0
+topSpeed = 120
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
@@ -482,7 +489,7 @@ margin_bottom = 977.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ScoreAnimation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 7 )
 anims/Summary = SubResource( 4 )
 
@@ -497,4 +504,11 @@ stream = ExtResource( 6 )
 
 [node name="ScoreSounds" type="Node2D" parent="."]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ScoreSounds"]
+[node name="A" type="AudioStreamPlayer" parent="ScoreSounds"]
+stream = ExtResource( 8 )
+
+[node name="B" type="AudioStreamPlayer" parent="ScoreSounds"]
+stream = ExtResource( 9 )
+
+[node name="C" type="AudioStreamPlayer" parent="ScoreSounds"]
+stream = ExtResource( 10 )
