@@ -78,15 +78,15 @@ margin_bottom = 291.0
 
 [node name="NitroLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
 margin_right = 200.0
-margin_bottom = 31.0
+margin_bottom = 27.0
 theme = ExtResource( 9 )
 text = "Nitro"
 align = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 200.0
-margin_bottom = 235.0
+margin_bottom = 231.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 fill_mode = 4
@@ -94,9 +94,9 @@ radial_initial_angle = 218.0
 radial_fill_degrees = 282.0
 
 [node name="NitroPercent" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
-margin_top = 239.0
+margin_top = 235.0
 margin_right = 200.0
-margin_bottom = 270.0
+margin_bottom = 262.0
 size_flags_horizontal = 3
 theme = ExtResource( 9 )
 text = "0%"
@@ -109,15 +109,15 @@ margin_bottom = 291.0
 
 [node name="SpeedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
 margin_right = 200.0
-margin_bottom = 31.0
+margin_bottom = 27.0
 theme = ExtResource( 9 )
 text = "Speed"
 align = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 200.0
-margin_bottom = 235.0
+margin_bottom = 231.0
 max_value = 350.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
@@ -126,9 +126,9 @@ radial_initial_angle = 218.0
 radial_fill_degrees = 282.0
 
 [node name="SpeedText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
-margin_top = 239.0
+margin_top = 235.0
 margin_right = 200.0
-margin_bottom = 270.0
+margin_bottom = 262.0
 size_flags_horizontal = 3
 theme = ExtResource( 9 )
 text = "0 km/h"
@@ -141,15 +141,15 @@ margin_bottom = 291.0
 
 [node name="AlcoholLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
 margin_right = 200.0
-margin_bottom = 31.0
+margin_bottom = 27.0
 theme = ExtResource( 9 )
 text = "Alcohol Level"
 align = 1
 
 [node name="TextureProgress" type="TextureProgress" parent="MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 200.0
-margin_bottom = 235.0
+margin_bottom = 231.0
 max_value = 4.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
@@ -158,9 +158,9 @@ radial_initial_angle = 218.0
 radial_fill_degrees = 282.0
 
 [node name="AlcoholText" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
-margin_top = 239.0
+margin_top = 235.0
 margin_right = 200.0
-margin_bottom = 270.0
+margin_bottom = 262.0
 size_flags_horizontal = 3
 theme = ExtResource( 9 )
 text = "0%"
@@ -174,26 +174,27 @@ size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations"]
 margin_right = 1308.0
-margin_bottom = 31.0
+margin_bottom = 27.0
 
 [node name="DistanceLeftLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/VBoxContainer"]
-margin_right = 1171.0
-margin_bottom = 31.0
+margin_right = 1214.0
+margin_bottom = 27.0
 size_flags_horizontal = 3
 theme = ExtResource( 9 )
 text = "Distance Left : "
 align = 2
 
 [node name="DistanceLeft" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/VBoxContainer"]
-margin_left = 1175.0
+margin_left = 1218.0
 margin_right = 1308.0
-margin_bottom = 31.0
+margin_bottom = 27.0
 theme = ExtResource( 9 )
 text = "??? meters"
 align = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+current = true
 
 [node name="Spawners" type="Node2D" parent="."]
 
