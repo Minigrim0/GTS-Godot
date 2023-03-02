@@ -21,10 +21,16 @@ export(NodePath) var AlcoholLabelPath
 var AlcoholProgessBar = null
 var AlcoholLabel = null
 
+var timer = 0
+
+onready var initial_collision_position_y = $TruckCollision.position.y
+onready var initial_sprite_position_y = $TruckSprite.position.y
+onready var initial_nitro_position_y = $Nitro.position.y
+
 
 export(String, "Male", "Female") var driver_gender = "Male"
 
-var alcohol_level = 0.0  # mg/L
+var alcohol_level = 0.0  # percent of alcohol in blood
 
 var velocity = Vector2(0, 0)
 var nitro_level = 0
@@ -145,6 +151,11 @@ func process_movement():
 	velocity = velocity.normalized() * steering_speed
 	velocity.x = actual_speed()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	process_movement()
 	velocity = move_and_slide(velocity)
+	timer += delta
+	var offset = alcohol_level * 10 * sin(timer * 2 * PI)
+	$TruckCollision.position.y = initial_collision_position_y + offset
+	$TruckSprite.position.y = initial_sprite_position_y + offset
+	$Nitro.position.y = initial_nitro_position_y + offset
