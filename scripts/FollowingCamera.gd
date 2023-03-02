@@ -31,5 +31,4 @@ func _on_LevelEnd_area_entered(area):
 
 func updDistanceLeft():
 	if endOfLevel != null:
-		var distance = (endOfLevel.position.x - position.x) / 100
-		distanceLeftLabel.text = "%d meters" % distance
+		distanceLeftLabel.text = "%d meters" % ((endOfLevel.position.x - position.x) / 100)

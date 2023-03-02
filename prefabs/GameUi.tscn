@@ -24,13 +24,8 @@ extents = Vector2( 10, 540 )
 
 [node name="GameElements" type="Node2D"]
 script = ExtResource( 3 )
-followedItemPath = NodePath("../Truck")
-distanceLeftLabelPath = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Informations/VBoxContainer/DistanceLeft")
-endOfLevelPath = NodePath("../LevelEnd")
 
 [node name="Background2" type="Node2D" parent="."]
-script = ExtResource( 3 )
-followedItemPath = NodePath("../Truck")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background2"]
 margin_right = 1920.0
@@ -255,9 +250,19 @@ __meta__ = {
 "_editor_description_": "Garbage Collector, destroy every object that crosses it"
 }
 
-[node name="EndCollisionCheck" type="Area2D" parent="."]
+[node name="EndCollisionCheck" type="Area2D" parent="Borders"]
+collision_layer = 8
+collision_mask = 8
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EndCollisionCheck"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/EndCollisionCheck"]
+position = Vector2( -10, 540 )
+shape = SubResource( 5 )
+
+[node name="TruckEndCollisionCheck" type="Area2D" parent="Borders"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/TruckEndCollisionCheck"]
 position = Vector2( -10, 540 )
 shape = SubResource( 5 )
 

@@ -29,8 +29,11 @@ AlcoholLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContain
 [node name="GameUI" parent="." instance=ExtResource( 3 )]
 
 [node name="LevelEnd" type="Area2D" parent="."]
-position = Vector2( 180000, 0 )
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
 position = Vector2( -2200, 540 )
 shape = SubResource( 4 )
+
+[connection signal="area_entered" from="LevelEnd" to="GameUI" method="_on_LevelEnd_area_entered"]
