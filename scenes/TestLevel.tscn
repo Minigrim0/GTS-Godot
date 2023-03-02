@@ -27,6 +27,8 @@ AlcoholProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxC
 AlcoholLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/AlcoholText")
 
 [node name="GameUI" parent="." instance=ExtResource( 3 )]
+followedItemPath = NodePath("../Truck")
+endOfLevelPath = NodePath("../LevelEnd")
 
 [node name="LevelEnd" type="Area2D" parent="."]
 collision_layer = 8

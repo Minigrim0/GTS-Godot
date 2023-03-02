@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scripts/spawner.gd" type="Script" id=1]
 [ext_resource path="res://scripts/GarbageCollector.gd" type="Script" id=2]
-[ext_resource path="res://scripts/FollowingCamera.gd" type="Script" id=3]
+[ext_resource path="res://scripts/GameUI.gd" type="Script" id=3]
 [ext_resource path="res://assets/images/car.png" type="Texture" id=4]
 [ext_resource path="res://assets/images/Cara.png" type="Texture" id=5]
 [ext_resource path="res://assets/images/poubelle.png" type="Texture" id=6]
@@ -259,6 +259,7 @@ position = Vector2( -10, 540 )
 shape = SubResource( 5 )
 
 [node name="TruckEndCollisionCheck" type="Area2D" parent="Borders"]
+position = Vector2( 2100, 0 )
 collision_layer = 8
 collision_mask = 8
 
@@ -268,3 +269,4 @@ shape = SubResource( 5 )
 
 [connection signal="area_entered" from="Borders/GarbageCollector" to="Borders/GarbageCollector" method="_on_GarbageCollector_area_entered"]
 [connection signal="body_entered" from="Borders/GarbageCollector" to="Borders/GarbageCollector" method="_on_GarbageCollector_body_entered"]
+[connection signal="body_entered" from="Borders/TruckEndCollisionCheck" to="." method="_on_TruckEndCollisionCheck_body_entered"]
