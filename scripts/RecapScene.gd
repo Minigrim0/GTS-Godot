@@ -57,4 +57,5 @@ func playScore():
 
 
 func endScene():
-	print("End of the scene, let's go garage")
+	get_node("/root/MainMusicPlayer").volume_db = 0
+	assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while loading main menu")

@@ -103,7 +103,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Summary"
-length = 10.0
+length = 15.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/CollectedTrash/CTValue:percent_visible")
 tracks/0/interp = 1
@@ -219,7 +219,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 7.5, 10 ),
+"times": PoolRealArray( 7.5, 15 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -232,9 +232,6 @@ tracks/9/keys = {
 
 [node name="RecapScene" type="Node2D"]
 script = ExtResource( 7 )
-totalTime = 200.0
-efficiency = 40.0
-topSpeed = 120
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 960, 540 )
