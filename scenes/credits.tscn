@@ -1,72 +1,29 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/fonts/TrashHand/credits/gameTitle.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/credits.gd" type="Script" id=2]
 [ext_resource path="res://themes/credits.tres" type="Theme" id=3]
-[ext_resource path="res://assets/fonts/TrashHand/credits/sectionTitle.tres" type="DynamicFont" id=4]
 [ext_resource path="res://assets/fonts/TrashHand/TrashHand.TTF" type="DynamicFontData" id=5]
 
 [sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=1]
-size = 30
+size = 50
 font_data = ExtResource( 5 )
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 2 )
-credits_file = "res://assets/credits.json"
+credits_file = "res://assets/credits.txt"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1920.0
 margin_bottom = 1080.0
 color = Color( 0.733333, 0, 0, 1 )
 
-[node name="CreditsContainer" type="Control" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-
-[node name="TitleLine" type="Label" parent="CreditsContainer"]
-anchor_right = 1.0
-margin_top = 1080.0
-margin_bottom = 1111.0
-size_flags_horizontal = 3
-theme = ExtResource( 3 )
-custom_fonts/font = ExtResource( 1 )
-text = "Title line"
-align = 1
-
-[node name="SectionTitle" type="Label" parent="CreditsContainer"]
-anchor_right = 1.0
-margin_top = 1080.0
-margin_bottom = 1111.0
-size_flags_horizontal = 3
-theme = ExtResource( 3 )
-custom_fonts/font = ExtResource( 4 )
-text = "Credits line"
-align = 1
-
-[node name="RichLine" type="RichTextLabel" parent="CreditsContainer"]
+[node name="Credits" type="RichTextLabel" parent="."]
 margin_top = 1080.0
 margin_right = 1920.0
-margin_bottom = 1120.0
+margin_bottom = 3052.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme = ExtResource( 3 )
 custom_fonts/normal_font = SubResource( 2 )
 bbcode_enabled = true
-bbcode_text = "bbcode line"
-text = "bbcode line"
-
-[node name="Line" type="Label" parent="CreditsContainer"]
-anchor_right = 1.0
-margin_top = 1080.0
-margin_bottom = 1094.0
-size_flags_horizontal = 3
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 1 )
-text = "Credits line"
-align = 1
+fit_content_height = true
