@@ -1,0 +1,31 @@
+[color=white][center]Garbage Truck Simulator[/center][/color]
+
+
+[color=black][center]Programming[/center][/color]
+[color=white][center]Minigrim0[/center][/color]
+
+
+[color=black][center]Character Animation[/center][/color]
+[color=white][center]Minigrim0[/center][/color]
+
+
+[color=black][center]Sound Effects[/center][/color]
+[color=white][center]Minigrim0[/center][/color]
+
+
+[color=black][center]Alcohol Computations[/center][/color]
+[color=white][center]Widmark Formula on [url=https://www.wikihow.com/Calculate-Blood-Alcohol-Content-(Widmark-Formula)]wikihow[/url][/center][/color]
+
+
+[color=black][center]Music[/center][/color]
+[color=white][center]Frantic by [url=https://pixabay.com/users/lemonmusicstudio-14942887/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=15190]Lemon Music Studio[/url] on [url=https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Pixabay[/url][/center][/color]
+[color=white][center]Banjo Pickin by [url=https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Caffeine_Creek_Band[/url] on [url=https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Pixabay[/url][/center][/color]
+[color=white][center]Banjo Romp by [url=https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Caffeine_Creek_Band[/url] on [url=https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Pixabay[/url][/center][/color]
+[color=white][center]Cool Folk Music by [url=https://pixabay.com/users/caffeine_creek_band-11181297/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Caffeine_Creek_Band[/url] on [url=https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=820]Pixabay[/url][/center][/color]
+
+
+[color=white][center]This game was made using the [url=https://godotengine.org/]Godot Game Engine[/url]"[/center][/color]
+[center][img=150]res://assets/meta/godot.png[/img][/center]
+
+[color=white][center]You can contribute to this project on [url=https://gitlab.com/Minigrim0/gts-godot]Gitlab[/url][/center][/color]
+[center][img=150]res://assets/meta/gitlab.png[/img][/center]
