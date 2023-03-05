@@ -6,21 +6,6 @@ export(int) var nitro_spending_speed = 30  # Per second
 export(int) var speed = 300 # px/second = 3m/s = 10.8km/h
 export(float) var health = 100.0
 
-export(NodePath) var NitroProgressBarPath
-export(NodePath) var NitroLabelPath
-var NitroProgessBar = null
-var NitroLabel = null
-
-export(NodePath) var SpeedProgressBarPath
-export(NodePath) var SpeedLabelPath
-var SpeedProgessBar = null
-var SpeedLabel = null
-
-export(NodePath) var AlcoholProgressBarPath
-export(NodePath) var AlcoholLabelPath
-var AlcoholProgessBar = null
-var AlcoholLabel = null
-
 var timer = 0
 
 onready var initial_collision_position_y = $TruckCollision.position.y
@@ -40,14 +25,8 @@ var nitro_enabled = false
 
 func _ready():
 	$TruckBounce.current_animation = "Balance"
-	NitroLabel = get_node(NitroLabelPath)
-	NitroProgessBar = get_node(NitroProgressBarPath)
-	SpeedLabel = get_node(SpeedLabelPath)
-	SpeedProgessBar = get_node(SpeedProgressBarPath)
-	AlcoholLabel = get_node(AlcoholLabelPath)
-	AlcoholProgessBar = get_node(AlcoholProgressBarPath)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	if nitro_enabled:
 		nitro_level -= nitro_spending_speed * delta
@@ -68,24 +47,29 @@ func _process(delta):
 		# An hour is 2 minutes irl, delta is in seconds
 		alcohol_level -= 0.015 * delta / 120
 
-	if NitroProgessBar != null:
-		NitroProgessBar.value = nitro_level
-	if NitroLabel != null:
-		NitroLabel.text = "%d%%" % nitro_level
 
-	if SpeedProgessBar != null:
-		SpeedProgessBar.value = kmh_speed()
-	if SpeedLabel != null:
-		SpeedLabel.text = "%d km/h" % kmh_speed()
+func get_nitro_level():
+	return nitro_level
 
-	if AlcoholProgessBar != null:
-		AlcoholProgessBar.value = alcohol_level
-	if AlcoholLabel != null:
-		AlcoholLabel.text = "%f%%" % alcohol_level
+	
+func get_speed():
+	var _sp = kmh_speed()
+	$"/root/PlayerState".set_top_speed(_sp)
+	return _sp
+
+	
+func get_alcohol_level():
+	return alcohol_level
 
 
 func actual_speed():
-	return speed * (health / 100)
+	var score = $"/root/PlayerState".get_score()
+	if nitro_enabled:
+		speed = ((150 + (score / 2)) + ((nitro_level / 2) * (score + 10)) / 2) * (health / 100)
+	else:
+		speed = (150 + (score) / 2) * (health / 100)
+
+	return speed
 
 
 func kmh_speed():
@@ -121,7 +105,8 @@ func add_alcohol(percent):
 	alcohol_level += (grams_of_alcohol / (bodyweight * r)) * 100
 
 func trashCollected():
-	speed += 5
+	var to_add = int(randf() * 10 + 5)
+	$"/root/PlayerState".upd_score(to_add)
 
 func enable_nitro():
 	if nitro_enabled == false and nitro_level > 20:
