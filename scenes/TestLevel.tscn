@@ -19,19 +19,14 @@ region_rect = Rect2( 0, 0, 180000, 768 )
 position = Vector2( 135, 468 )
 steering_speed = 600
 speed = 400
-NitroProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/TextureProgress")
-NitroLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/NitroPercent")
-SpeedProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/TextureProgress")
-SpeedLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/SpeedText")
-AlcoholProgressBarPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/TextureProgress")
-AlcoholLabelPath = NodePath("../GameUI/MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/AlcoholText")
 
 [node name="GameUI" parent="." instance=ExtResource( 3 )]
 followedItemPath = NodePath("../Truck")
 endOfLevelPath = NodePath("../LevelEnd")
+truckPath = NodePath("../Truck")
 
 [node name="LevelEnd" type="Area2D" parent="."]
-position = Vector2( 180000, 0 )
+position = Vector2( 9000, 0 )
 collision_layer = 8
 collision_mask = 8
 

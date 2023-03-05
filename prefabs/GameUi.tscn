@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/spawner.gd" type="Script" id=1]
 [ext_resource path="res://scripts/GarbageCollector.gd" type="Script" id=2]
@@ -9,6 +9,15 @@
 [ext_resource path="res://assets/images/interface/gauge/gauge.png" type="Texture" id=7]
 [ext_resource path="res://assets/images/interface/gauge/gauge_over.png" type="Texture" id=8]
 [ext_resource path="res://themes/GameGuiText.tres" type="Theme" id=9]
+[ext_resource path="res://assets/fonts/TrashHand/TrashHand.TTF" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=6]
+size = 40
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 40
+font_data = ExtResource( 10 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 193, 165.5 )
@@ -166,30 +175,104 @@ theme = ExtResource( 9 )
 text = "0%"
 align = 1
 
-[node name="Informations" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Informations" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 margin_left = 612.0
 margin_right = 1920.0
 margin_bottom = 291.0
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations"]
-margin_right = 1308.0
-margin_bottom = 27.0
-
-[node name="DistanceLeftLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/VBoxContainer"]
-margin_right = 1214.0
-margin_bottom = 27.0
+[node name="LabelsVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations"]
+margin_right = 652.0
+margin_bottom = 291.0
 size_flags_horizontal = 3
-theme = ExtResource( 9 )
+
+[node name="DistanceLeftLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
+margin_right = 652.0
+margin_bottom = 44.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
 text = "Distance Left : "
 align = 2
 
-[node name="DistanceLeft" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/VBoxContainer"]
-margin_left = 1218.0
-margin_right = 1308.0
-margin_bottom = 27.0
-theme = ExtResource( 9 )
+[node name="TopSpeedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
+margin_top = 48.0
+margin_right = 652.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+text = "Top speed : "
+align = 2
+
+[node name="IncomeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
+margin_top = 96.0
+margin_right = 652.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+text = "Money made :"
+align = 2
+
+[node name="EfficiencyLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
+margin_top = 144.0
+margin_right = 652.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+text = "Efficiency :"
+align = 2
+
+[node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
+margin_top = 192.0
+margin_right = 652.0
+margin_bottom = 236.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+text = "Time :"
+align = 2
+
+[node name="ValuesVBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations"]
+margin_left = 656.0
+margin_right = 800.0
+margin_bottom = 291.0
+size_flags_horizontal = 2
+
+[node name="DistanceLeft" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
+margin_right = 144.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 7 )
 text = "??? meters"
+align = 2
+
+[node name="TopSpeed" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
+margin_top = 48.0
+margin_right = 144.0
+margin_bottom = 92.0
+custom_fonts/font = SubResource( 7 )
+text = "??? Km/h"
+align = 2
+
+[node name="Income" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
+margin_top = 96.0
+margin_right = 144.0
+margin_bottom = 140.0
+custom_fonts/font = SubResource( 7 )
+text = "??? euros"
+align = 2
+
+[node name="Efficiency" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
+margin_top = 144.0
+margin_right = 144.0
+margin_bottom = 188.0
+custom_fonts/font = SubResource( 7 )
+text = "??? %"
+align = 2
+
+[node name="Timer" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
+margin_top = 192.0
+margin_right = 144.0
+margin_bottom = 236.0
+custom_fonts/font = SubResource( 7 )
+text = "??? s"
 align = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
