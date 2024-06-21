@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/garage.ogg-2aebf8fe9df6f26d8ff3547a0e1225c4.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://x0m5hb0fcj3j"
+path="res://.godot/imported/garage.ogg-2aebf8fe9df6f26d8ff3547a0e1225c4.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/garage.ogg"
-dest_files=[ "res://.import/garage.ogg-2aebf8fe9df6f26d8ff3547a0e1225c4.oggstr" ]
+dest_files=["res://.godot/imported/garage.ogg-2aebf8fe9df6f26d8ff3547a0e1225c4.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

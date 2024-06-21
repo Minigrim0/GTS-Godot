@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Roll.ogg-023993ed5fa033273f860757517b1d2e.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cf8h03g2mv5vk"
+path="res://.godot/imported/Roll.ogg-023993ed5fa033273f860757517b1d2e.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/Roll.ogg"
-dest_files=[ "res://.import/Roll.ogg-023993ed5fa033273f860757517b1d2e.oggstr" ]
+dest_files=["res://.godot/imported/Roll.ogg-023993ed5fa033273f860757517b1d2e.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

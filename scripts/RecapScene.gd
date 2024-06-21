@@ -8,9 +8,9 @@ var income = 0
 
 var audio_to_play
 
-const score_a := Color.green
-const score_b := Color.orange
-const score_c := Color.red
+const score_a := Color.GREEN
+const score_b := Color.ORANGE
+const score_c := Color.RED
 
 
 # Called when the node enters the scene tree for the first time.
@@ -31,15 +31,15 @@ func _ready():
 	# Create a score text based on the score
 	if score < 25:
 		score_text = "C"
-		$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6/NValue.add_color_override("font_color", score_c)
+		$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6/NValue.add_theme_color_override("font_color", score_c)
 		audio_to_play = $ScoreSounds/C
 	elif score < 50:
 		score_text = "B"
-		$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6/NValue.add_color_override("font_color", score_b)
+		$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6/NValue.add_theme_color_override("font_color", score_b)
 		audio_to_play = $ScoreSounds/B
 	else:
 		score_text = "A"
-		$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6/NValue.add_color_override("font_color", score_a)
+		$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6/NValue.add_theme_color_override("font_color", score_a)
 		audio_to_play = $ScoreSounds/A
 
 	$Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/CollectedTrash/CTValue.text = str(trashCollected)
@@ -58,4 +58,4 @@ func playScore():
 
 func endScene():
 	get_node("/root/MainMusicPlayer").volume_db = 0
-	assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while loading main menu")
+	assert(get_tree().change_scene_to_file("res://scenes/MainMenu.tscn") == 0, "Error while loading main menu")

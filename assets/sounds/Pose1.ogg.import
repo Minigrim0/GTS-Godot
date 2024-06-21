@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/Pose1.ogg-fa9d18c9c003d737f45683756170d5b8.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://nyagbmnyf8oq"
+path="res://.godot/imported/Pose1.ogg-fa9d18c9c003d737f45683756170d5b8.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/Pose1.ogg"
-dest_files=[ "res://.import/Pose1.ogg-fa9d18c9c003d737f45683756170d5b8.oggstr" ]
+dest_files=["res://.godot/imported/Pose1.ogg-fa9d18c9c003d737f45683756170d5b8.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

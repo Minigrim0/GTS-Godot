@@ -5,14 +5,14 @@ const speed_up_multiplier := 10
 
 var speed_up := false
 
-export(String, FILE, "*.txt") var credits_file
+@export var credits_file # (String, FILE, "*.txt")
 
 
 func load_credits():
 	var file = File.new()
 	file.open(credits_file, File.READ)
-	$Credits.bbcode_text = file.get_as_text()
-	assert($Credits.connect("meta_clicked", self, "onMetaClick") == 0, "Error connecting clicks")
+	$Credits.text = file.get_as_text()
+	assert($Credits.connect("meta_clicked", Callable(self, "onMetaClick")) == 0, "Error connecting clicks")
 	file.close()
 
 
@@ -25,13 +25,13 @@ func _process(delta):
 
 	if speed_up:
 		local_scroll_speed *= speed_up_multiplier
-	$Credits.rect_position.y -= local_scroll_speed
-	if $Credits.rect_position.y < -$Credits.get_size().y:
+	$Credits.position.y -= local_scroll_speed
+	if $Credits.position.y < -$Credits.get_size().y:
 		finish()
 
 
 func finish():
-	assert(get_tree().change_scene("res://scenes/MainMenu.tscn") == 0, "Error while change scene to Main Menu")
+	assert(get_tree().change_scene_to_file("res://scenes/MainMenu.tscn") == 0, "Error while change scene to Main Menu")
 
 
 func onMetaClick(meta):

@@ -1,28 +1,28 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://assets/images/backgrounds/RecapScreen.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/backgrounds/RecapScreen.png" type="Texture2D" id=1]
 [ext_resource path="res://assets/sounds/Pose1.ogg" type="AudioStream" id=3]
 [ext_resource path="res://assets/sounds/Pose2.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/fonts/Chalky/Chalk-y Sans.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/fonts/Chalky/Chalk-y Sans.otf" type="FontFile" id=5]
 [ext_resource path="res://assets/sounds/Roll.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scripts/RecapScene.gd" type="Script" id=7]
 [ext_resource path="res://assets/sounds/A.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/sounds/B.ogg" type="AudioStream" id=9]
 [ext_resource path="res://assets/sounds/C.ogg" type="AudioStream" id=10]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="FontFile" id=6]
 size = 100
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="FontFile" id=5]
 size = 75
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="FontFile" id=2]
 size = 45
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="FontFile" id=3]
 size = 120
 font_data = ExtResource( 5 )
 
@@ -35,8 +35,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -47,8 +47,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -59,8 +59,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -71,8 +71,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -83,8 +83,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -95,8 +95,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0.0 ]
 }
@@ -111,8 +111,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
@@ -123,8 +123,8 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
@@ -135,8 +135,8 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 1.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
@@ -147,8 +147,8 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
@@ -159,8 +159,8 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 2.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
@@ -171,8 +171,8 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 7.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 7.5 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 1,
 "values": [ 0.0, 1.0 ]
 }
@@ -183,8 +183,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0.5, 1, 1.5, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0.5, 1, 1.5, 2.5 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ true, true, true, true ]
 }
@@ -195,8 +195,8 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 2 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -207,8 +207,8 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 3 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 3 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ true ]
 }
@@ -219,8 +219,8 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 7.5, 15 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 7.5, 15 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "playScore"
@@ -233,256 +233,256 @@ tracks/9/keys = {
 [node name="RecapScene" type="Node2D"]
 script = ExtResource( 7 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2( 960, 540 )
 scale = Vector2( 1.406, 1.406 )
 texture = ExtResource( 1 )
 
 [node name="Text" type="MarginContainer" parent="."]
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Text"]
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="ScreenTitle" type="Label" parent="Text/VBoxContainer"]
-margin_right = 1920.0
-margin_bottom = 99.0
+offset_right = 1920.0
+offset_bottom = 99.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
-custom_colors/font_color = Color( 0.870588, 0.0705882, 0.0705882, 1 )
-custom_fonts/font = SubResource( 6 )
+theme_override_colors/font_color = Color( 0.870588, 0.0705882, 0.0705882, 1 )
+theme_override_fonts/font = SubResource( 6 )
 text = "Mission Complete !"
 align = 1
 valign = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Text/VBoxContainer"]
-margin_top = 103.0
-margin_right = 1920.0
-margin_bottom = 1080.0
+offset_top = 103.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Blackboard" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2"]
-margin_right = 1920.0
-margin_bottom = 884.0
+offset_right = 1920.0
+offset_bottom = 884.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VSplitContainer" type="VSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard"]
-margin_right = 597.0
-margin_bottom = 884.0
+offset_right = 597.0
+offset_bottom = 884.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard"]
-margin_left = 601.0
-margin_right = 1796.0
-margin_bottom = 884.0
+offset_left = 601.0
+offset_right = 1796.0
+offset_bottom = 884.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_right = 1195.0
-margin_bottom = 75.0
-custom_fonts/font = SubResource( 5 )
+offset_right = 1195.0
+offset_bottom = 75.0
+theme_override_fonts/font = SubResource( 5 )
 text = "Mission Summary"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 79.0
-margin_right = 1195.0
-margin_bottom = 161.0
+offset_top = 79.0
+offset_right = 1195.0
+offset_bottom = 161.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="CollectedTrash" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 165.0
-margin_right = 1195.0
-margin_bottom = 210.0
+offset_top = 165.0
+offset_right = 1195.0
+offset_bottom = 210.0
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/CollectedTrash"]
-margin_right = 595.0
-margin_bottom = 45.0
+offset_right = 595.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Collected trashcans :"
 
 [node name="CTValue" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/CollectedTrash"]
-margin_left = 599.0
-margin_right = 1195.0
-margin_bottom = 45.0
+offset_left = 599.0
+offset_right = 1195.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "0"
 percent_visible = 0.0
 
 [node name="HSplitContainer4" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 214.0
-margin_right = 1195.0
-margin_bottom = 255.0
+offset_top = 214.0
+offset_right = 1195.0
+offset_bottom = 255.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 
 [node name="TotalTime" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 259.0
-margin_right = 1195.0
-margin_bottom = 304.0
+offset_top = 259.0
+offset_right = 1195.0
+offset_bottom = 304.0
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/TotalTime"]
-margin_right = 595.0
-margin_bottom = 45.0
+offset_right = 595.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Total Time :"
 
 [node name="TTValue" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/TotalTime"]
-margin_left = 599.0
-margin_right = 1195.0
-margin_bottom = 45.0
+offset_left = 599.0
+offset_right = 1195.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "o s"
 percent_visible = 0.0
 
 [node name="HSplitContainer5" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 308.0
-margin_right = 1195.0
-margin_bottom = 350.0
+offset_top = 308.0
+offset_right = 1195.0
+offset_bottom = 350.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 
 [node name="Efficiency" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 354.0
-margin_right = 1195.0
-margin_bottom = 399.0
+offset_top = 354.0
+offset_right = 1195.0
+offset_bottom = 399.0
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/Efficiency"]
-margin_right = 595.0
-margin_bottom = 45.0
+offset_right = 595.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Efficiency :"
 
 [node name="EValue" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/Efficiency"]
-margin_left = 599.0
-margin_right = 1195.0
-margin_bottom = 45.0
+offset_left = 599.0
+offset_right = 1195.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "20%"
 percent_visible = 0.0
 
 [node name="HSplitContainer6" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 403.0
-margin_right = 1195.0
-margin_bottom = 444.0
+offset_top = 403.0
+offset_right = 1195.0
+offset_bottom = 444.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 
 [node name="TopSpeed" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 448.0
-margin_right = 1195.0
-margin_bottom = 493.0
+offset_top = 448.0
+offset_right = 1195.0
+offset_bottom = 493.0
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/TopSpeed"]
-margin_right = 595.0
-margin_bottom = 45.0
+offset_right = 595.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Top speed :"
 
 [node name="TSValue" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/TopSpeed"]
-margin_left = 599.0
-margin_right = 1195.0
-margin_bottom = 45.0
+offset_left = 599.0
+offset_right = 1195.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "0 km/h"
 percent_visible = 0.0
 
 [node name="HSplitContainer7" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 497.0
-margin_right = 1195.0
-margin_bottom = 538.0
+offset_top = 497.0
+offset_right = 1195.0
+offset_bottom = 538.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.05
 
 [node name="Income" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 542.0
-margin_right = 1195.0
-margin_bottom = 587.0
+offset_top = 542.0
+offset_right = 1195.0
+offset_bottom = 587.0
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/Income"]
-margin_right = 595.0
-margin_bottom = 45.0
+offset_right = 595.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "Income :"
 
 [node name="IValue" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/Income"]
-margin_left = 599.0
-margin_right = 1195.0
-margin_bottom = 45.0
+offset_left = 599.0
+offset_right = 1195.0
+offset_bottom = 45.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 2 )
+theme_override_fonts/font = SubResource( 2 )
 text = "0 €"
 percent_visible = 0.0
 
 [node name="HSplitContainer2" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 591.0
-margin_right = 1195.0
-margin_bottom = 674.0
+offset_top = 591.0
+offset_right = 1195.0
+offset_bottom = 674.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 678.0
-margin_right = 1195.0
-margin_bottom = 797.0
+offset_top = 678.0
+offset_right = 1195.0
+offset_bottom = 797.0
 
 [node name="Label" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6"]
-margin_right = 595.0
-margin_bottom = 119.0
+offset_right = 595.0
+offset_bottom = 119.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+theme_override_fonts/font = SubResource( 3 )
 text = "Note:"
 
 [node name="NValue" type="Label" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer/HBoxContainer6"]
-margin_left = 599.0
-margin_right = 1195.0
-margin_bottom = 119.0
+offset_left = 599.0
+offset_right = 1195.0
+offset_bottom = 119.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 3 )
+theme_override_fonts/font = SubResource( 3 )
 text = "F"
 percent_visible = 0.0
 
 [node name="HSplitContainer3" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard/VBoxContainer"]
-margin_top = 801.0
-margin_right = 1195.0
-margin_bottom = 884.0
+offset_top = 801.0
+offset_right = 1195.0
+offset_bottom = 884.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="VSplitContainer2" type="VSplitContainer" parent="Text/VBoxContainer/VBoxContainer2/Blackboard"]
-margin_left = 1800.0
-margin_right = 1920.0
-margin_bottom = 884.0
+offset_left = 1800.0
+offset_right = 1920.0
+offset_bottom = 884.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Text/VBoxContainer/VBoxContainer2"]
-margin_top = 888.0
-margin_right = 1920.0
-margin_bottom = 977.0
+offset_top = 888.0
+offset_right = 1920.0
+offset_bottom = 977.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 

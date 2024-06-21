@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/frantic-15190.ogg-f40d4ae9fbd8afb06f4732b41371bd32.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dsvahbyj1w0v3"
+path="res://.godot/imported/frantic-15190.ogg-f40d4ae9fbd8afb06f4732b41371bd32.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/music/frantic-15190.ogg"
-dest_files=[ "res://.import/frantic-15190.ogg-f40d4ae9fbd8afb06f4732b41371bd32.oggstr" ]
+dest_files=["res://.godot/imported/frantic-15190.ogg-f40d4ae9fbd8afb06f4732b41371bd32.oggvorbisstr"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/banjo-romp-109570.mp3-25780a9513babdf9e72f16753388516d.mp3str"
+uid="uid://nt58vbcmrm3"
+path="res://.godot/imported/banjo-romp-109570.mp3-25780a9513babdf9e72f16753388516d.mp3str"
 
 [deps]
 
 source_file="res://assets/music/banjo-romp-109570.mp3"
-dest_files=[ "res://.import/banjo-romp-109570.mp3-25780a9513babdf9e72f16753388516d.mp3str" ]
+dest_files=["res://.godot/imported/banjo-romp-109570.mp3-25780a9513babdf9e72f16753388516d.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

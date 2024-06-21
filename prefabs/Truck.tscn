@@ -1,8 +1,8 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/images/CamionPoubelle.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/CamionPoubelle.png" type="Texture2D" id=1]
 [ext_resource path="res://scripts/truck.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/animations/flames/flames.png" type="Texture" id=3]
+[ext_resource path="res://assets/images/animations/flames/flames.png" type="Texture2D" id=3]
 [ext_resource path="res://assets/sounds/truck/nitro.ogg" type="AudioStream" id=4]
 [ext_resource path="res://themes/healthbar.tres" type="Theme" id=5]
 
@@ -20,8 +20,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 }
@@ -40,8 +40,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.3, 0.6, 0.9 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, -5.0, 0.0, 5.0 ]
 }
@@ -55,13 +55,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ -5.0 ]
 }
 
-[node name="Truck" type="KinematicBody2D"]
+[node name="Truck" type="CharacterBody2D"]
 collision_layer = 11
 collision_mask = 11
 script = ExtResource( 2 )
@@ -75,7 +75,7 @@ shape = SubResource( 1 )
 [node name="Nitro" type="Node2D" parent="."]
 position = Vector2( 300, 0 )
 
-[node name="NitroSprite" type="Sprite" parent="Nitro"]
+[node name="NitroSprite" type="Sprite2D" parent="Nitro"]
 visible = false
 position = Vector2( -98, -13 )
 rotation = -1.5708
@@ -93,7 +93,7 @@ anims/RESET = SubResource( 3 )
 stream = ExtResource( 4 )
 volume_db = -15.0
 
-[node name="TruckSprite" type="Sprite" parent="."]
+[node name="TruckSprite" type="Sprite2D" parent="."]
 position = Vector2( 300, 0 )
 rotation = -0.0872665
 texture = ExtResource( 1 )
@@ -103,10 +103,10 @@ anims/Balance = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-margin_left = 188.0
-margin_top = -103.0
-margin_right = 428.0
-margin_bottom = -89.0
+offset_left = 188.0
+offset_top = -103.0
+offset_right = 428.0
+offset_bottom = -89.0
 theme = ExtResource( 5 )
 value = 100.0
 percent_visible = false

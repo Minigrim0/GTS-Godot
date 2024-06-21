@@ -1,15 +1,19 @@
 [remap]
 
-importer="ogg_vorbis"
-type="AudioStreamOGGVorbis"
-path="res://.import/trashcan_explode.ogg-94baa93a529e503b1ae95105ab4b0b18.oggstr"
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cxg76s8ntli3e"
+path="res://.godot/imported/trashcan_explode.ogg-94baa93a529e503b1ae95105ab4b0b18.oggvorbisstr"
 
 [deps]
 
 source_file="res://assets/sounds/trashcan/trashcan_explode.ogg"
-dest_files=[ "res://.import/trashcan_explode.ogg-94baa93a529e503b1ae95105ab4b0b18.oggstr" ]
+dest_files=["res://.godot/imported/trashcan_explode.ogg-94baa93a529e503b1ae95105ab4b0b18.oggvorbisstr"]
 
 [params]
 
 loop=false
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
