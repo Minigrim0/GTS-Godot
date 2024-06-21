@@ -10,10 +10,13 @@ config_version=5
 
 [application]
 
-config/name="GTS"
+config/name="Garbage Truck Simulator"
+config/description="Garbage truck simulator is a high precision simulator on the overlooked job of garbage collection. Its intent is to raise awareness and excitement around the too often forgotten but essential function of picking up trash"
+config/version="0.1.0"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.png"
+boot_splash/image="res://assets/images/CamionPoubelle.png"
+config/icon="res://assets/images/poubelle.png"
 
 [autoload]
 

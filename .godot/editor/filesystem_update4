@@ -1,9 +1,0 @@
-res://default_env.tres
-res://scenes/MainMenu.tscn
-res://themes/MainMenuButtons.tres
-res://scripts/truck.gd
-res://scripts/spawner.gd
-res://scripts/GameUI.gd
-res://prefabs/GameUi.tscn
-res://themes/healthbar.tres
-res://scenes/TestLevel.tscn
