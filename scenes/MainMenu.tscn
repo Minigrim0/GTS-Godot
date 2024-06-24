@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://xqntxjwqg3f7"]
+[gd_scene load_steps=8 format=3 uid="uid://xqntxjwqg3f7"]
 
 [ext_resource type="Texture2D" uid="uid://dv76j2wpduk7a" path="res://assets/images/marcel.png" id="1"]
 [ext_resource type="FontFile" uid="uid://jbpl1bx7vm5b" path="res://assets/fonts/TrashHand/TrashHand.TTF" id="2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" path="res://prefabs/MichaelBay.tscn" id="5"]
 [ext_resource type="Script" path="res://scripts/MainMenu.gd" id="6"]
 [ext_resource type="Theme" uid="uid://wfe7elr0c2bh" path="res://themes/MainMenuButtons.tres" id="7"]
-[ext_resource type="FontFile" path="res://assets/fonts/MedievalSharp.tres" id="8"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("2")])
@@ -200,15 +199,17 @@ size_flags_stretch_ratio = 0.1
 
 [node name="Disclaimer" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme = ExtResource("7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 20
 text = "Be aware that this game contains "
 
 [node name="MichaelBay" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 6
+theme = ExtResource("7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 20
 text = "Michael Bay."
 script = ExtResource("4")
 michel_path = NodePath("../../../../MichaelBay")
@@ -217,9 +218,11 @@ michel_path = NodePath("../../../../MichaelBay")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
+theme = ExtResource("7")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("8")
+theme_override_font_sizes/font_size = 20
 text = "Minigrim0® 2016-2023"
+horizontal_alignment = 2
 
 [node name="MichaelBay" parent="." instance=ExtResource("5")]
 position = Vector2(500, 1080)

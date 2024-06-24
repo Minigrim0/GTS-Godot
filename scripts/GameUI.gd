@@ -13,21 +13,28 @@ func _ready():
 	$"/root/PlayerState".level_start()
 	if endOfLevelPath != null:
 		endOfLevel = get_node(endOfLevelPath)
+	else:
+		print("Warning, end of level not loaded")
 	if followedItemPath != null:
 		followedItem = get_node(followedItemPath)
+	else:
+		print("Warning, followed item not loaded")
 	if truckPath != null:
 		truck = get_node(truckPath)
+	else:
+		print("Warning, truck not loaded")
 
 
 func _process(_delta):
 	if followedItem != null:
-		position.x = followedItem.position.x
+		position.x = followedItem.position.x - 300
 	updateGauges()
 	updateTextElements()
 
 
 func _on_LevelEnd_area_entered(area):
 	if area.name == "EndCollisionCheck":
+		print("End")
 		followedItem = null
 
 
@@ -53,7 +60,7 @@ func updateGauges():
 
 func updateTextElements():
 	if endOfLevel != null:
-		$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/DistanceLeft.text = "%d meters" % ((endOfLevel.position.x - position.x) / 100)
-	$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/TopSpeed.text = str($"/root/PlayerState".get_top_speed())
-	$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/Income.text = str($"/root/PlayerState".get_score())
-	$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/Efficiency.text = str($"/root/PlayerState".get_efficiency("trash"))
+		$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/DistanceLeft.text = "%d meters" % ($"/root/PlayerState".get_distance_covered())
+	$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/TopSpeed.text = str("%d km/h" % $"/root/PlayerState".get_top_speed())
+	$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/Income.text = str("%d €" % $"/root/PlayerState".get_score())
+	$MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer/Efficiency.text = str("%d%%" % $"/root/PlayerState".get_efficiency("trash"))

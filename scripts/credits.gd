@@ -5,12 +5,10 @@ const speed_up_multiplier := 10
 
 var speed_up := false
 
-@export var credits_file # (String, FILE, "*.txt")
-
+@export_file("*.txt") var credits_file
 
 func load_credits():
-	var file = File.new()
-	file.open(credits_file, File.READ)
+	var file = FileAccess.open(credits_file, FileAccess.READ)
 	$Credits.text = file.get_as_text()
 	assert($Credits.connect("meta_clicked", Callable(self, "onMetaClick")) == 0, "Error connecting clicks")
 	file.close()

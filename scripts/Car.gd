@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed: int
+@export var speed: float
 @export var heading_left: bool # True = to the left, False = to the right
 @export var damage: int = 10
 

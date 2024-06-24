@@ -1,29 +1,32 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://txcrgiupiru8"]
 
-[ext_resource path="res://scripts/credits.gd" type="Script" id=2]
-[ext_resource path="res://themes/credits.tres" type="Theme" id=3]
-[ext_resource path="res://assets/fonts/TrashHand/TrashHand.TTF" type="FontFile" id=5]
+[ext_resource type="Script" path="res://scripts/credits.gd" id="2"]
+[ext_resource type="Theme" uid="uid://r5on22a4syag" path="res://themes/credits.tres" id="3"]
+[ext_resource type="FontFile" uid="uid://jbpl1bx7vm5b" path="res://assets/fonts/TrashHand/TrashHand.TTF" id="5"]
 
-[sub_resource type="FontFile" id=2]
-size = 50
-font_data = ExtResource( 5 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("5")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
 
-[node name="Node2D" type="Node2D"]
-script = ExtResource( 2 )
+[node name="CreditsScene" type="Node2D"]
+script = ExtResource("2")
 credits_file = "res://assets/credits.txt"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-color = Color( 0.733333, 0, 0, 1 )
+color = Color(0.733333, 0, 0, 1)
 
 [node name="Credits" type="RichTextLabel" parent="."]
-offset_top = 1080.0
 offset_right = 1920.0
-offset_bottom = 3052.0
+offset_bottom = 1972.0
 size_flags_horizontal = 3
 size_flags_vertical = 4
-theme = ExtResource( 3 )
-theme_override_fonts/normal_font = SubResource( 2 )
+theme = ExtResource("3")
+theme_override_fonts/normal_font = SubResource("2")
 bbcode_enabled = true
-fit_content_height = true

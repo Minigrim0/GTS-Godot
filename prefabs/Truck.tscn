@@ -1,112 +1,123 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=3 uid="uid://btlq4lq88ite2"]
 
-[ext_resource path="res://assets/images/CamionPoubelle.png" type="Texture2D" id=1]
-[ext_resource path="res://scripts/truck.gd" type="Script" id=2]
-[ext_resource path="res://assets/images/animations/flames/flames.png" type="Texture2D" id=3]
-[ext_resource path="res://assets/sounds/truck/nitro.ogg" type="AudioStream" id=4]
-[ext_resource path="res://themes/healthbar.tres" type="Theme" id=5]
+[ext_resource type="Texture2D" uid="uid://b8utphds14wt8" path="res://assets/images/CamionPoubelle.png" id="1"]
+[ext_resource type="Script" path="res://scripts/truck.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cgf18yhdm17s" path="res://assets/images/animations/flames/flames.png" id="3"]
+[ext_resource type="AudioStream" uid="uid://c4m1nk28ts7dm" path="res://assets/sounds/truck/nitro.ogg" id="4"]
+[ext_resource type="Theme" uid="uid://dgx0iccd2oblq" path="res://themes/healthbar.tres" id="5"]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id="1"]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "Nitro"
 length = 0.6
-loop = true
+loop_mode = 1
 step = 0.05
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Nitro/NitroSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id="3"]
 length = 0.001
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kuxw7"]
+_data = {
+"Nitro": SubResource("2"),
+"RESET": SubResource("3")
+}
+
+[sub_resource type="Animation" id="4"]
 resource_name = "Balance"
 length = 1.2
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("TruckSprite:rotation_degrees")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.3, 0.6, 0.9 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [ 0.0, -5.0, 0.0, 5.0 ]
+"values": [0.0, -5.0, 0.0, 5.0]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("TruckSprite:rotation_degrees")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ -5.0 ]
+"values": [-5.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e3lgh"]
+_data = {
+"Balance": SubResource("4"),
+"RESET": SubResource("5")
 }
 
 [node name="Truck" type="CharacterBody2D"]
 collision_layer = 11
 collision_mask = 11
-script = ExtResource( 2 )
+script = ExtResource("2")
 speed = 0
 
 [node name="TruckCollision" type="CollisionShape2D" parent="."]
-position = Vector2( 300, 0 )
-scale = Vector2( 13.5, 5 )
-shape = SubResource( 1 )
+scale = Vector2(13.5, 5)
+shape = SubResource("1")
 
 [node name="Nitro" type="Node2D" parent="."]
-position = Vector2( 300, 0 )
 
 [node name="NitroSprite" type="Sprite2D" parent="Nitro"]
 visible = false
-position = Vector2( -98, -13 )
+position = Vector2(-98, -13)
 rotation = -1.5708
-texture = ExtResource( 3 )
-offset = Vector2( 10, -110 )
+texture = ExtResource("3")
+offset = Vector2(10, -110)
 vframes = 12
 frame = 6
 
 [node name="NitroAnimation" type="AnimationPlayer" parent="Nitro"]
 root_node = NodePath("../..")
-anims/Nitro = SubResource( 2 )
-anims/RESET = SubResource( 3 )
+libraries = {
+"": SubResource("AnimationLibrary_kuxw7")
+}
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Nitro"]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = -15.0
 
 [node name="TruckSprite" type="Sprite2D" parent="."]
-position = Vector2( 300, 0 )
 rotation = -0.0872665
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 
 [node name="TruckBounce" type="AnimationPlayer" parent="."]
-anims/Balance = SubResource( 4 )
-anims/RESET = SubResource( 5 )
+libraries = {
+"": SubResource("AnimationLibrary_e3lgh")
+}
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = 188.0
+offset_left = -120.0
 offset_top = -103.0
-offset_right = 428.0
-offset_bottom = -89.0
-theme = ExtResource( 5 )
+offset_right = 120.0
+offset_bottom = -93.0
+theme = ExtResource("5")
 value = 100.0
-percent_visible = false
+show_percentage = false

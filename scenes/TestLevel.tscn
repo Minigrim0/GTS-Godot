@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bknf38tr5mfo7"]
+[gd_scene load_steps=7 format=3 uid="uid://bknf38tr5mfo7"]
 
-[ext_resource type="PackedScene" path="res://prefabs/Truck.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://btlq4lq88ite2" path="res://prefabs/Truck.tscn" id="1"]
+[ext_resource type="Shader" path="res://shaders/scrolling.gdshader" id="1_28o5r"]
 [ext_resource type="Texture2D" uid="uid://wamcmusrnxyt" path="res://assets/images/backgrounds/map.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://qgsunjubpul3" path="res://prefabs/GameUi.tscn" id="3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hs5wl"]
+shader = ExtResource("1_28o5r")
+shader_parameter/speed = 0.0
 
 [sub_resource type="RectangleShape2D" id="4"]
 size = Vector2(80, 1080)
@@ -10,15 +15,18 @@ size = Vector2(80, 1080)
 [node name="Level" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_hs5wl")
 texture = ExtResource("2")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 180000, 768)
+region_rect = Rect2(0, 0, 3000, 768)
 
 [node name="Truck" parent="." instance=ExtResource("1")]
-position = Vector2(135, 468)
+position = Vector2(300, 544)
 steering_speed = 600
 speed = 400
+background_path = NodePath("../Background")
 
 [node name="GameUI" parent="." instance=ExtResource("3")]
 followedItemPath = NodePath("../Truck")

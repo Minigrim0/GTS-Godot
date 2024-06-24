@@ -1,10 +1,13 @@
 extends CharacterBody2D
+class_name Truck
 
 @export var steering_speed: int = 100
 @export var nitro_replenish_speed: int = 10
 @export var nitro_spending_speed: int = 30  # Per second
 @export var speed: int = 300 # px/second = 3m/s = 10.8km/h
 @export var health: float = 100.0
+@export var background_path: NodePath
+@export_enum("Male", "Female", "X") var driver_gender: String = "Male"
 
 var timer = 0
 
@@ -12,19 +15,21 @@ var timer = 0
 @onready var initial_sprite_position_y = $TruckSprite.position.y
 @onready var initial_nitro_position_y = $Nitro.position.y
 
-
-@export var driver_gender = "Male" # (String, "Male", "Female")
-
 var alcohol_level = 0.0  # percent of alcohol in blood
 
-var _velocity = Vector2(0, 0)
 var nitro_level = 0
 var nitro_cooldown = 0
 var nitro_enabled = false
 
+# The background's shader must be updated according to the truck's speed
+var background: Node2D
+
 
 func _ready():
 	$TruckBounce.current_animation = "Balance"
+
+	if background_path != null:
+		background = get_node(background_path)
 
 
 func _process(delta):
@@ -47,6 +52,7 @@ func _process(delta):
 		# An hour is 2 minutes irl, delta is in seconds
 		alcohol_level -= 0.015 * delta / 120
 
+	$"/root/PlayerState".update_distance_covered((kmh_speed() / 3.6) * delta)
 
 func get_nitro_level():
 	return nitro_level
@@ -62,7 +68,8 @@ func get_alcohol_level():
 	return alcohol_level
 
 
-func actual_speed():
+func actual_speed() -> float:
+	# Returns the speed in pixels/sec
 	var score = $"/root/PlayerState".get_score()
 	if nitro_enabled:
 		speed = ((150 + (score / 2)) + ((nitro_level / 2) * (score + 10)) / 2) * (health / 100)
@@ -72,21 +79,24 @@ func actual_speed():
 	return speed
 
 
-func kmh_speed():
-	return (actual_speed() / 100) * 3.6
+func kmh_speed() -> float:
+	return (actual_speed() / 100.0) * 3.6
 
 
-func upd_health(delta):
+func upd_health(delta: float) -> void:
 	# Delta can be negative to account for damage
 	health += delta
 	$HealthBar.value = health
 
-func hurt(damage):
+
+func hurt(damage: float) -> void:
 	upd_health(-damage)
 
-func heal(amount):
+
+func heal(amount: float) -> void:
 	upd_health(amount)
 	health = clamp(health, 0, 100)
+
 
 func add_alcohol(percent):
 	# BAC = [Alcohol consumed in grams / (Body weight in grams x r)] x 100.
@@ -104,9 +114,11 @@ func add_alcohol(percent):
 	var r = 0.68 if driver_gender == "Male" else 0.55
 	alcohol_level += (grams_of_alcohol / (bodyweight * r)) * 100
 
+
 func trashCollected():
 	var to_add = int(randf() * 10 + 5)
 	$"/root/PlayerState".upd_score(to_add)
+
 
 func enable_nitro():
 	if nitro_enabled == false and nitro_level > 20:
@@ -116,6 +128,7 @@ func enable_nitro():
 		$Nitro/AudioStreamPlayer.play()
 		speed *= 2
 
+
 func disable_nitro():
 	nitro_enabled = false
 	nitro_cooldown = 5
@@ -123,23 +136,28 @@ func disable_nitro():
 	$Nitro/NitroAnimation.current_animation = ""
 	speed /= 2
 
+
 func _input(event):
 	if event.is_action_pressed("nitro_start"):
 		enable_nitro()
 
+
+# Handles vertical movement inputs (steering) and moves the truck
 func process_movement():
-	_velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
-		_velocity.y -= 1.0
+		velocity.y -= 1.0
 	if Input.is_action_pressed("move_down"):
-		_velocity.y += 1.0
-	_velocity = _velocity.normalized() * steering_speed
-	_velocity.x = actual_speed()
+		velocity.y += 1.0
+	velocity = velocity.normalized() * steering_speed
+	# velocity.x = actual_speed()
+	print(actual_speed())
+	background.material.set("shader_parameter/speed", actual_speed())
+	move_and_slide()
+
 
 func _physics_process(delta):
 	process_movement()
-	set_velocity(_velocity)
-	move_and_slide()
 	timer += delta
 	var offset = alcohol_level * 10 * sin(timer * 2 * PI)
 	$TruckCollision.position.y = initial_collision_position_y + offset

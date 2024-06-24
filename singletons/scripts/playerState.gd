@@ -8,7 +8,8 @@ var current_health = 100
 var spawned_items = {}
 var collected_items = {}
 
-var score = 0
+var distance_covered: float = 0.0
+var score: int = 0
 var level_timer = 0
 var ongoing = false
 var top_speed = 0
@@ -97,3 +98,12 @@ func get_efficiency(item_name):
 	if item_name in collected_items.keys() and item_name in spawned_items.keys():
 		return (float(collected_items[item_name]) / float(spawned_items[item_name])) * 100.0
 	return 0
+
+
+# Returns the disance covered in meters
+func get_distance_covered() -> float:
+	return distance_covered
+
+
+func update_distance_covered(delta: float) -> void:
+	distance_covered += delta

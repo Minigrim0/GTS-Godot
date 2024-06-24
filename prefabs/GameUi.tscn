@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dnwj7f260gqq7" path="res://assets/images/interface/gauge/gauge.png" id="7"]
 [ext_resource type="PackedScene" path="res://prefabs/Car.tscn" id="7_ykjp5"]
 [ext_resource type="Texture2D" uid="uid://du40nb07vjswp" path="res://assets/images/interface/gauge/gauge_over.png" id="8"]
-[ext_resource type="Theme" path="res://themes/GameGuiText.tres" id="9"]
+[ext_resource type="Theme" uid="uid://l047tibfydqw" path="res://themes/GameGuiText.tres" id="9"]
 [ext_resource type="PackedScene" path="res://prefabs/TrashCan.tscn" id="9_hqcf1"]
 [ext_resource type="FontFile" uid="uid://jbpl1bx7vm5b" path="res://assets/fonts/TrashHand/TrashHand.TTF" id="10"]
 [ext_resource type="PackedScene" path="res://prefabs/Beer.tscn" id="11_i1xee"]
@@ -25,6 +25,14 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
 
 [sub_resource type="FontFile" id="7"]
 fallbacks = Array[Font]([ExtResource("10"), ExtResource("10")])
@@ -37,6 +45,14 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/24/0 = Vector2(0, 0)
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/24/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/24/0/kerning_overrides/24/0 = Vector2(0, 0)
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(386, 331)
@@ -100,6 +116,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("9")
 text = "Nitro"
+horizontal_alignment = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/NitroGauge"]
 layout_mode = 2
@@ -114,6 +131,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9")
 text = "0%"
+horizontal_alignment = 1
 
 [node name="SpeedGauge" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -122,6 +140,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("9")
 text = "Speed"
+horizontal_alignment = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge"]
 layout_mode = 2
@@ -137,6 +156,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9")
 text = "0 km/h"
+horizontal_alignment = 1
 
 [node name="AlcoholGauge" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -145,6 +165,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("9")
 text = "Alcohol Level"
+horizontal_alignment = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge"]
 layout_mode = 2
@@ -160,6 +181,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("9")
 text = "0%"
+horizontal_alignment = 1
 
 [node name="Informations" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -172,30 +194,35 @@ size_flags_horizontal = 3
 [node name="DistanceLeftLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("6")
 text = "Distance Left : "
 
 [node name="TopSpeedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("6")
 text = "Top speed : "
 
 [node name="IncomeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("6")
 text = "Money made :"
 
 [node name="EfficiencyLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("6")
 text = "Efficiency :"
 
 [node name="TimerLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/LabelsVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("6")
 text = "Time :"
 
@@ -205,26 +232,31 @@ size_flags_horizontal = 2
 
 [node name="DistanceLeft" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("7")
 text = "??? meters"
 
 [node name="TopSpeed" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("7")
 text = "??? Km/h"
 
 [node name="Income" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("7")
 text = "??? euros"
 
 [node name="Efficiency" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("7")
 text = "??? %"
 
 [node name="Timer" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Informations/ValuesVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("9")
 theme_override_fonts/font = SubResource("7")
 text = "??? s"
 

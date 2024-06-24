@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bgw1vmxqdx61l"]
 
-[ext_resource path="res://singletons/scripts/playerState.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://singletons/scripts/playerState.gd" id="1"]
 
 [node name="state" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource("1")
