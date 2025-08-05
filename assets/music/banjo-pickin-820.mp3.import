@@ -2,14 +2,18 @@
 
 importer="mp3"
 type="AudioStreamMP3"
-path="res://.import/banjo-pickin-820.mp3-a209d0187b363111008ee97f73d32be0.mp3str"
+uid="uid://dkyh31dm0bako"
+path="res://.godot/imported/banjo-pickin-820.mp3-a209d0187b363111008ee97f73d32be0.mp3str"
 
 [deps]
 
 source_file="res://assets/music/banjo-pickin-820.mp3"
-dest_files=[ "res://.import/banjo-pickin-820.mp3-a209d0187b363111008ee97f73d32be0.mp3str" ]
+dest_files=["res://.godot/imported/banjo-pickin-820.mp3-a209d0187b363111008ee97f73d32be0.mp3str"]
 
 [params]
 
 loop=true
 loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

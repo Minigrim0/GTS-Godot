@@ -1,19 +1,19 @@
 extends Area2D
 
-export(int) var speed
-export(bool) var heading_left # True = to the left, False = to the right
-export(int) var damage = 10
+@export var speed: int
+@export var heading_left: bool # True = to the left, False = to the right
+@export var damage: int = 10
 
 var velocity = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	speed = rand_range(30, 50)
+	speed = randf_range(30, 50)
 	if heading_left == true:
 		velocity.x = -speed
 	else:
 		velocity.x = speed
-	heading_left = rand_range(0.0, 1.0) < 0.8
+	heading_left = randf_range(0.0, 1.0) < 0.8
 
 	if not heading_left:
 		$CarSprite.set_flip_h(true)

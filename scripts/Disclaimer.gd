@@ -1,6 +1,6 @@
 extends Label
 
-export(NodePath) var michel_path
+@export var michel_path: NodePath
 
 var michel
 

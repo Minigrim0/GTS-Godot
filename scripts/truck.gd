@@ -1,23 +1,20 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-export(int) var steering_speed = 100
-export(int) var nitro_replenish_speed = 10
-export(int) var nitro_spending_speed = 30  # Per second
-export(int) var speed = 300 # px/second = 3m/s = 10.8km/h
-export(float) var health = 100.0
+@export var steering_speed: int = 100
+@export var nitro_replenish_speed: int = 10
+@export var nitro_spending_speed: int = 30  # Per second
+@export var speed: int = 300 # px/second = 3m/s = 10.8km/h
+@export var health: float = 100.0
 
 var timer = 0
 
-onready var initial_collision_position_y = $TruckCollision.position.y
-onready var initial_sprite_position_y = $TruckSprite.position.y
-onready var initial_nitro_position_y = $Nitro.position.y
-
-
-export(String, "Male", "Female") var driver_gender = "Male"
+@onready var initial_collision_position_y = $TruckCollision.position.y
+@onready var initial_sprite_position_y = $TruckSprite.position.y
+@onready var initial_nitro_position_y = $Nitro.position.y
 
 var alcohol_level = 0.0  # percent of alcohol in blood
 
-var velocity = Vector2(0, 0)
+var car_velocity = Vector2(0, 0)
 var nitro_level = 0
 var nitro_cooldown = 0
 var nitro_enabled = false
@@ -52,7 +49,7 @@ func get_nitro_level():
 	return nitro_level
 
 	
-func get_speed():
+func get_car_velocity():
 	var _sp = kmh_speed()
 	$"/root/PlayerState".set_top_speed(_sp)
 	return _sp
@@ -101,7 +98,7 @@ func add_alcohol(percent):
 	var standard_drinks = fmod(percent, 5)
 	var grams_of_alcohol = standard_drinks * 14
 	var bodyweight = 70000  # In grams
-	var r = 0.68 if driver_gender == "Male" else 0.55
+	var r = (0.68 + 0.55) / 2  # Average, no matter the gender
 	alcohol_level += (grams_of_alcohol / (bodyweight * r)) * 100
 
 func trashCollected():
@@ -128,17 +125,18 @@ func _input(event):
 		enable_nitro()
 
 func process_movement():
-	velocity = Vector2.ZERO
+	car_velocity = Vector2.ZERO
 	if Input.is_action_pressed("move_up"):
-		velocity.y -= 1.0
+		car_velocity.y -= 1.0
 	if Input.is_action_pressed("move_down"):
-		velocity.y += 1.0
-	velocity = velocity.normalized() * steering_speed
-	velocity.x = actual_speed()
+		car_velocity.y += 1.0
+	car_velocity = car_velocity.normalized() * steering_speed
+	car_velocity.x = actual_speed()
 
 func _physics_process(delta):
 	process_movement()
-	velocity = move_and_slide(velocity)
+	set_velocity(car_velocity)
+	move_and_slide()
 	timer += delta
 	var offset = alcohol_level * 10 * sin(timer * 2 * PI)
 	$TruckCollision.position.y = initial_collision_position_y + offset

@@ -1,8 +1,8 @@
 extends Node2D
 
-export(NodePath) var followedItemPath
-export(NodePath) var endOfLevelPath
-export(NodePath) var truckPath
+@export var followedItemPath: NodePath
+@export var endOfLevelPath: NodePath
+@export var truckPath: NodePath
 
 var followedItem
 var endOfLevel
@@ -34,20 +34,20 @@ func _on_LevelEnd_area_entered(area):
 func _on_TruckEndCollisionCheck_body_entered(body):
 	if body.name == "Truck":
 		$"/root/PlayerState".level_end()
-		assert(get_tree().change_scene("res://scenes/RecapScene.tscn") == 0, "Error while loading the recap")
+		assert(get_tree().change_scene_to_file("res://scenes/RecapScene.tscn") == 0, "Error while loading the recap")
 
 
 func updateGauges():
 	var nitro_level = truck.get_nitro_level()
-	$MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/TextureProgress.value = nitro_level
+	$MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/TextureProgressBar.value = nitro_level
 	$MarginContainer/VBoxContainer/HBoxContainer/NitroGauge/NitroPercent.text = "%d%%" % nitro_level
 
-	var speed = truck.get_speed()
-	$MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/TextureProgress.value = speed
-	$MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/SpeedText.text = "%d km/h" % speed
+	var speed = truck.get_velocity()
+	$MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/TextureProgressBar.value = speed.x
+	$MarginContainer/VBoxContainer/HBoxContainer/SpeedGauge/SpeedText.text = "%d km/h" % speed.x
 
 	var alcohol_level = truck.get_alcohol_level()
-	$MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/TextureProgress.value = alcohol_level
+	$MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/TextureProgressBar.value = alcohol_level
 	$MarginContainer/VBoxContainer/HBoxContainer/AlcoholGauge/AlcoholText.text = "%f%%" % alcohol_level
 
 

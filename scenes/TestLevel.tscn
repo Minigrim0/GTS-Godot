@@ -1,37 +1,37 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://vtrqtqphit02"]
 
-[ext_resource path="res://prefabs/Truck.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/images/backgrounds/map.png" type="Texture" id=2]
-[ext_resource path="res://prefabs/GameUi.tscn" type="PackedScene" id=3]
+[ext_resource type="PackedScene" path="res://prefabs/Truck.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://nwdwvyvu821x" path="res://assets/images/backgrounds/map.png" id="2"]
+[ext_resource type="PackedScene" path="res://prefabs/GameUi.tscn" id="3"]
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 40, 540 )
+[sub_resource type="RectangleShape2D" id="4"]
+size = Vector2(80, 1080)
 
 [node name="Level" type="Node2D"]
 
-[node name="Background" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2")
 centered = false
 region_enabled = true
-region_rect = Rect2( 0, 0, 180000, 768 )
+region_rect = Rect2(0, 0, 180000, 768)
 
-[node name="Truck" parent="." instance=ExtResource( 1 )]
-position = Vector2( 135, 468 )
+[node name="Truck" parent="." instance=ExtResource("1")]
+position = Vector2(135, 468)
 steering_speed = 600
 speed = 400
 
-[node name="GameUI" parent="." instance=ExtResource( 3 )]
+[node name="GameUI" parent="." instance=ExtResource("3")]
 followedItemPath = NodePath("../Truck")
 endOfLevelPath = NodePath("../LevelEnd")
 truckPath = NodePath("../Truck")
 
 [node name="LevelEnd" type="Area2D" parent="."]
-position = Vector2( 180000, 0 )
+position = Vector2(180000, 0)
 collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelEnd"]
-position = Vector2( -2200, 540 )
-shape = SubResource( 4 )
+position = Vector2(-2200, 540)
+shape = SubResource("4")
 
 [connection signal="area_entered" from="LevelEnd" to="GameUI" method="_on_LevelEnd_area_entered"]
